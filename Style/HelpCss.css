@@ -1,0 +1,89 @@
+﻿body
+{background-color: #B3D6E8;
+}
+.elementLabel
+{
+    font-family: Verdana, Sans-Serif, Arial;
+	color: Navy;
+	background-color: Transparent;
+	border: 0;
+	font-weight: normal;
+	font-size: 8pt;
+}
+.mandatoryField
+{
+	color: Red;
+	font-family: Verdana, Sans-Serif, Arial;
+	font-weight: normal;
+	font-size: 8pt;
+}
+.textBox
+{
+	font-family: Verdana, Sans-Serif, Arial;
+	font-weight: normal;
+	font-size: 8pt;
+	border: 1px solid #5970B2;
+}
+.buttonDefault
+{
+	margin: 0 1px 0 0;
+	padding: 4px 10px;
+	width: 100px;
+	background-color: Transparent;
+	background: #5970B2;
+	color: #FFF;
+	text-align: center;
+	text-decoration: none;
+	border: 0;
+	cursor: pointer;
+	font-size: 11px;
+}
+.buttonDefault:hover
+{
+	background: #49A3FF;
+}
+.gridview
+{
+    border: 1px solid #000000;
+    margin-right: 127px;
+}
+.gridHeader
+{
+	background-color: #CCCCCC;
+	height: 23px;
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #1a60a6;
+	cursor: default;
+	
+}
+.gridItem:hover
+{
+	background-color: #eeeeee;
+	cursor: pointer;
+}
+.gridItem
+{
+	background-color: #ffffff;
+	color: #000000;
+	font-family: Verdana;
+	font-size: 11px;
+}
+.gridAlternateItem:hover
+{
+	background-color: #eeeeee;
+	cursor: pointer;
+}
+.gridAlternateItem
+{
+	background-color: #eeeeee;
+	color: #000000;
+	font-family: Verdana;
+	font-size: 11px;
+}
+.search
+{
+
+    height:15px;
+}

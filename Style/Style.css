@@ -1,0 +1,461 @@
+﻿body
+{
+    background-color: #e4f0fe;
+}
+
+#sddm
+{
+    margin: 0;
+    padding: 0;
+    z-index: 30;
+}
+
+#sddm li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    font: bold 11px arial;
+}
+
+#sddm li a
+{
+    display: block;
+    margin: 0 1px 0 0;
+    padding: 4px 10px;
+    width: 120px;
+    background: #5970B2;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+}
+
+#sddm li a:hover
+{
+    background: #49A3FF;
+}
+
+#sddm div
+{
+    position: absolute;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    background: #EAEBD8;
+    border: 1px solid #5970B2;
+}
+
+#sddm div a
+{
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 5px 10px;
+    width: auto;
+    white-space: nowrap;
+    text-align: left;
+    text-decoration: none;
+    background: #EAEBD8;
+    color: #2875DE;
+    font: 11px arial;
+}
+
+#sddm div a:hover
+{
+    background: #49A3FF;
+    color: #FFF;
+}
+h2
+{
+    font-family: Verdana, Sans-Serif, Arial;
+    color: Navy;
+    background-color: Transparent;
+    border: 0;
+    font-weight: bold;
+    font-size: 14pt;
+}
+.buttonDefault
+{
+    margin: 0 1px 0 0;
+    padding: 4px 10px;
+    width: 100px;
+    background: #007DFB;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 11px;
+}
+.buttonDefault:hover
+{
+    background: #FF9900;
+}
+.buttonDefault:focus
+{
+    background: #FF9900;
+}
+
+.buttonCopy
+{
+    margin: 1;
+    padding: 2px;
+    width: 60px;
+    background: #098BF7;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 11px;
+}
+.buttonCopy:hover
+{
+    background: #FF9900;
+}
+.buttonCopy:focus
+{
+    background: #FF9900;
+}
+
+.btnlookup_Folder
+{
+    background-image: url(../Images/Folder_on.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: Transparent;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border: 0;
+    vertical-align: bottom;
+}
+
+.pageLabel
+{
+    font-family: Verdana, Sans-Serif, Arial;
+    color: Navy;
+    background-color: Transparent;
+    border: 0;
+    font-weight: normal;
+    font-size: 10pt;
+}
+.elementLabel
+{
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    font-family: Verdana, Sans-Serif, Arial;
+    color: Navy;
+    background-color: Transparent;
+    font-weight: normal;
+    font-size: 8pt;
+    margin-top: 0px;
+}
+.elementTable
+{
+    font-family: Verdana, Sans-Serif, Arial;
+    color: #000000;
+    background-color: #D9E9FD;
+    border: 0.1px none #000000;
+    font-weight: normal;
+    font-size: 8pt;
+}
+.columnHeader
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: bold;
+    font-style: normal;
+}
+.textBox
+{
+    font-family: Verdana, Sans-Serif, Arial;
+    font-weight: normal;
+    font-size: 8pt;
+    border: 1px solid #5970B2;
+    height: 17px;
+}
+.textBox:focus
+{
+    background-color: #C4FFFF;
+}
+
+.textBoxRight
+{
+    text-align: right;
+    background-color: White;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-weight: normal;
+    font-size: 8pt;
+    border: 1px solid #5970B2;
+}
+.txtdisabled
+{
+    font-family: Verdana, Sans-Serif, Arial;
+    font-weight: normal;
+    font-size: 8pt;
+    border: 1px solid #66CCFF;
+    color: black;
+    background-color: #EBEBEB;
+}
+
+.txtForwardContract
+{
+    font-family: Verdana, Sans-Serif, Arial;
+    font-weight: bold;
+    font-size: 8pt;
+    border: 1px solid #66CCFF;
+    color: black;
+    background-color: #ffff99;
+}
+
+.mandatoryField
+{
+    color: Red;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-weight: normal;
+    font-size: 8pt;
+}
+.head
+{
+    color: #5970B2;
+    width: 100%;
+    display: block;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-weight: bold;
+    font-size: 12pt;
+    padding-bottom: 5px;
+}
+.gridItem:hover
+{
+    background-color: #D1ECFC;
+    cursor: pointer;
+}
+.gridItem
+{
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Verdana;
+    font-size: 11px;
+}
+.gridAlternateItem:hover
+{
+    background-color: #D1ECFC;
+    cursor: pointer;
+}
+.gridAlternateItem
+{
+    background-color: #eeeeee;
+    color: #000000;
+    font-family: Verdana;
+    font-size: 11px;
+}
+.gridHeader
+{
+    background-color: #CCCCCC;
+    height: 23px;
+    font-family: Verdana;
+    font-size: 11px;
+    font-weight: normal;
+    color: #1a60a6;
+    cursor: default;
+    width: 100%;
+    overflow: auto;
+}
+.deleteButton
+{
+    background-color: transparent;
+    color: Navy;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-size: 11px;
+    width: 50px;
+    border: 0;
+    cursor: pointer;
+}
+.deleteButton:hover
+{
+    color: Orange;
+    text-decoration: underline;
+}
+.deleteButtonDisabled
+{
+    background-color: transparent;
+    color: #CCCCCC;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-size: 11px;
+    width: 50px;
+    border: 0;
+    cursor: default;
+}
+.gridFooter
+{
+    background-color: #000000;
+    height: 23px;
+    background-repeat: repeat-x;
+    background-color: #e2e2e1;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-size: 11px;
+    font-weight: normal;
+    color: #1a60a6;
+    text-align: left;
+    vertical-align: bottom;
+    border-bottom: 1px solid #aca899;
+    border-left: 1px solid #aca899;
+    border-right: 1px solid #aca899;
+    width: 100%;
+}
+.dropdownList
+{
+    font-family: Verdana, Sans-Serif, Arial;
+    font-size: 11px;
+    font-weight: normal;
+    color: #000000;
+    height: 19px;
+}
+.pagingButton
+{
+    background-color: Transparent;
+    color: Navy;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-size: 11px;
+    width: 50px;
+    border: 0;
+    cursor: pointer;
+}
+.pagingButton:hover
+{
+    color: Orange;
+    text-decoration: underline;
+}
+.pagingButtonDisabled
+{
+    background-color: Transparent;
+    color: #CCCCCC;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-size: 11px;
+    width: 50px;
+    border: 0;
+    cursor: default;
+}
+
+.btncalendar_enabled
+{
+    background-image: url(../Images/calendar.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #253556;
+    width: 16px;
+    height: 15px;
+    font-family: Verdana;
+    font-size: 11px;
+    font-weight: bolder;
+    text-align: center;
+    cursor: hand;
+    border: 0;
+    vertical-align: middle;
+}
+
+.btnHelp_enabled
+{
+    background-image: url(../Images/images.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 11px;
+    height: 11px;
+    font-family: Verdana;
+    font-size: 11px;
+    font-weight: bolder;
+    text-align: center;
+    cursor: hand;
+    border: 0;
+    vertical-align: middle;
+    background-color: Transparent;
+}
+.btnCloseMe
+{
+    background-image: url(../Images/closeme.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    color: #333333;
+    height: 19px;
+    width: 66px;
+    font-family: Verdana;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+}
+.progressimageposition
+{
+    position: absolute;
+    z-index: 1001;
+    background-color: Transparent;
+}
+.progressBackground
+{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0; /* Replace this text with the line below */
+    background-color: #000000;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+.signout_bt
+{
+    background-image: url(images/icon_logout.png);
+    width: 88px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    font-size: 11px;
+    color: #1c4880;
+    position: relative;
+    padding: 0;
+    float: right;
+}
+
+.btnGO
+{
+    background-image: url(../Images/search.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    color: #333333;
+    height: 19px;
+    width: 66px;
+    font-family: Verdana;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+}
+
+.focus
+{
+    border: 1px solid #AA88FF;
+    background-color: #FFEEAA;
+}
+.textBoxRightfocus
+{
+    border: 1px solid #AA88FF;
+    background-color: #FFEEAA;
+    text-align: right;
+    font-family: Verdana, Sans-Serif, Arial;
+    font-weight: normal;
+}
+
+hr
+{
+    border: 1px groove #CCFFFF;
+}

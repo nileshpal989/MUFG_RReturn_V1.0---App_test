@@ -1,0 +1,108 @@
+Sr No.: 1
+User: Nilesh.P
+Date: 01/08/2025 12:17:56 PM
+Branch Name: NEW DELHI
+IP Address: 10.10.0.17
+Page URL: http://10.10.0.40/MUFG_AD_v1.0/RRETURN/Ret_TxtFileCReation.aspx
+Exception Type: UnauthorizedAccessException
+Message: Access to the path 'C:\inetpub\wwwroot\MUFG_AD_v1.0\TF_GeneratedFiles\RRETURN\ERS\BR_NEWDELHI_RBI_ERS\644_QE.TXT' is denied.
+StackTrace: at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.CreateText(String path)
+   at RRETURN_Ret_TxtFileCReation.btnCreate_Click(Object sender, EventArgs e)
+Source: mscorlib
+Target Site: Void WinIOError(Int32, System.String)
+===================================================================
+
+Sr No.: 2
+User: Nilesh.P
+Date: 01/08/2025 12:18:06 PM
+Branch Name: NEW DELHI
+IP Address: 10.10.0.17
+Page URL: http://10.10.0.40/MUFG_AD_v1.0/RRETURN/Ret_TxtFileCReation.aspx
+Exception Type: UnauthorizedAccessException
+Message: Access to the path 'C:\inetpub\wwwroot\MUFG_AD_v1.0\TF_GeneratedFiles\RRETURN\ERS\BR_NEWDELHI_RBI_ERS\644_QE.TXT' is denied.
+StackTrace: at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.CreateText(String path)
+   at RRETURN_Ret_TxtFileCReation.btnCreate_Click(Object sender, EventArgs e)
+Source: mscorlib
+Target Site: Void WinIOError(Int32, System.String)
+===================================================================
+
+Sr No.: 3
+User: Nilesh.P
+Date: 01/08/2025 3:33:02 PM
+Branch Name: NEW DELHI
+IP Address: 10.10.0.17
+Page URL: http://10.10.0.40/MUFG_AD_v1.0/RReturn/Transaction_FileUpload_New.aspx
+Exception Type: FileNotFoundException
+Message: Could not load file or assembly 'ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73' or one of its dependencies. The system cannot find the file specified.
+StackTrace: at NPOI.OpenXml4Net.OPC.ZipPackage..ctor(Stream filestream, PackageAccess access)
+   at NPOI.OpenXml4Net.OPC.OPCPackage.Open(Stream in1)
+   at NPOI.Util.PackageHelper.Open(Stream is1)
+   at NPOI.XSSF.UserModel.XSSFWorkbook..ctor(Stream is1)
+   at RRETURN_Transaction_FileUpload_New.GetExcelSheets(String FilePath, String Extension, String isHDR)
+Source: NPOI.OpenXml4Net
+Target Site: Void .ctor(System.IO.Stream, NPOI.OpenXml4Net.OPC.PackageAccess)
+===================================================================
+
+Sr No.: 4
+User: Nilesh.P
+Date: 01/08/2025 3:44:24 PM
+Branch Name: NEW DELHI
+IP Address: 10.10.0.17
+Page URL: http://10.10.0.40/MUFG_AD/RReturn/Transaction_FileUpload_New.aspx
+Exception Type: FileNotFoundException
+Message: Could not load file or assembly 'ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73' or one of its dependencies. The system cannot find the file specified.
+StackTrace: at NPOI.OpenXml4Net.OPC.ZipPackage..ctor(Stream filestream, PackageAccess access)
+   at NPOI.OpenXml4Net.OPC.OPCPackage.Open(Stream in1)
+   at NPOI.Util.PackageHelper.Open(Stream is1)
+   at NPOI.XSSF.UserModel.XSSFWorkbook..ctor(Stream is1)
+   at RRETURN_Transaction_FileUpload_New.GetExcelSheets(String FilePath, String Extension, String isHDR)
+Source: NPOI.OpenXml4Net
+Target Site: Void .ctor(System.IO.Stream, NPOI.OpenXml4Net.OPC.PackageAccess)
+===================================================================
+
+Sr No.: 5
+User: Nilesh.P
+Date: 01/08/2025 3:31:59 PM
+Branch Name: MUMBAI
+IP Address: 10.10.0.17
+Page URL: http://10.10.0.40/MUFG_AD_v1.0/RReturn/Transaction_FileUpload_New.aspx
+Exception Type: FileNotFoundException
+Message: Could not load file or assembly 'ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73' or one of its dependencies. The system cannot find the file specified.
+StackTrace: at NPOI.OpenXml4Net.OPC.ZipPackage..ctor(Stream filestream, PackageAccess access)
+   at NPOI.OpenXml4Net.OPC.OPCPackage.Open(Stream in1)
+   at NPOI.Util.PackageHelper.Open(Stream is1)
+   at NPOI.XSSF.UserModel.XSSFWorkbook..ctor(Stream is1)
+   at RRETURN_Transaction_FileUpload_New.GetExcelSheets(String FilePath, String Extension, String isHDR)
+Source: NPOI.OpenXml4Net
+Target Site: Void .ctor(System.IO.Stream, NPOI.OpenXml4Net.OPC.PackageAccess)
+===================================================================
+
+Sr No.: 6
+User: Nilesh.P
+Date: 01/08/2025 3:43:16 PM
+Branch Name: MUMBAI
+IP Address: 10.10.0.17
+Page URL: http://10.10.0.40/MUFG_AD_v1.0/RReturn/Transaction_FileUpload_New.aspx
+Exception Type: FileNotFoundException
+Message: Could not load file or assembly 'ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73' or one of its dependencies. The system cannot find the file specified.
+StackTrace: at NPOI.OpenXml4Net.OPC.ZipPackage..ctor(Stream filestream, PackageAccess access)
+   at NPOI.OpenXml4Net.OPC.OPCPackage.Open(Stream in1)
+   at NPOI.Util.PackageHelper.Open(Stream is1)
+   at NPOI.XSSF.UserModel.XSSFWorkbook..ctor(Stream is1)
+   at RRETURN_Transaction_FileUpload_New.GetExcelSheets(String FilePath, String Extension, String isHDR)
+Source: NPOI.OpenXml4Net
+Target Site: Void .ctor(System.IO.Stream, NPOI.OpenXml4Net.OPC.PackageAccess)
+===================================================================
+
