@@ -168,6 +168,192 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             Response.Redirect("ErrorPage.aspx");
         }
     }
+    //public string RES_CSV_GENERATE()
+    //{
+    //    string ErrorMessage = "";
+    //    try
+    //    {
+    //        System.Globalization.DateTimeFormatInfo dateInfo = new System.Globalization.DateTimeFormatInfo();
+    //        dateInfo.ShortDatePattern = "dd/MM/yyyy";
+    //        DateTime documentDate = Convert.ToDateTime(txtFromDate.Text.Trim(), dateInfo);
+    //        DateTime documentDate1 = Convert.ToDateTime(txtToDate.Text.Trim(), dateInfo);
+    //        string todate = txtToDate.Text.Trim();
+    //        string _directoryPath = "";
+    //        string _strAdCode = "";
+    //        string Branchname = ddlBranch.SelectedItem.ToString().Trim();
+    //        //_directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/"+ todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4));
+    //        //_strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
+            
+    //        string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
+    //        string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
+            
+    //        _directoryPath = basePath + "BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + datePart;
+    //        _strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + datePart;
+
+    //        if (!Directory.Exists(_directoryPath))
+    //        {
+    //            Directory.CreateDirectory(_directoryPath);
+    //        }
+    //        SqlParameter p1 = new SqlParameter("@Branch", SqlDbType.VarChar);
+    //        p1.Value = ddlBranch.SelectedItem.ToString().Trim();
+    //        SqlParameter p2 = new SqlParameter("@startdate", SqlDbType.VarChar);
+    //        p2.Value = documentDate.ToString("MM/dd/yyyy");
+    //        SqlParameter p3 = new SqlParameter("@enddate", SqlDbType.VarChar);
+    //        p3.Value = documentDate1.ToString("MM/dd/yyyy");
+    //        SqlParameter p4 = new SqlParameter("@AdCode", SqlDbType.VarChar);
+    //        p4.Value = ddlBranch.SelectedItem.Value;
+    //        #region CSVFile
+    //        //REM FOR CSV FILE
+    //        TF_DATA obj = new TF_DATA();
+    //        string _qry = "TF_RET_DATACSV";
+    //        DataTable dt = obj.getData(_qry, p1, p2, p3, p4);
+    //        string _filePath = _directoryPath + "/" + _strAdCode + ".CSV";
+    //        StreamWriter sw;
+    //        sw = File.CreateText(_filePath);
+    //        string _strHeader = "ADCODE,BRANCHNAME,SRNO,FR_FORTNIGHT_DT,TO_FORTNIGHT_DT,TRANSACTION_DT,DOCNO,IECODE,FORMSRNO,PURPOSE_ID,PORT_CODE,"
+    //            + "SHIPPING_BILL_NO,SHIPPING_BILL_DT,CURR,AMOUNT,INR_AMOUNT,AC_COUNTRY_CODE,BN_COUNTRY_CODE,CUSTOMSRNO,LCINDICATION,BENEFICIARYNAME,"
+    //            + "REMMITERNAME,VALUEDT,VASTRO_AC,MOD_TYPE,SCHEDULENO,REALISED_AMT,EXRT,BILL_NO,Bank Code,Bank Name,IMPORTER/EXPORTER COUNTRY";
+    //        sw.WriteLine(_strHeader);
+    //        if (dt.Rows.Count > 0)
+    //        {
+    //            for (int j = 0; j < dt.Rows.Count; j++)
+    //            {
+    //                string _strADCODE = dt.Rows[j]["ADCODE"].ToString().Trim();
+    //                sw.Write(_strADCODE + ",");
+    //                string _strBRANCHNAME = dt.Rows[j]["BRANCHNAME"].ToString().Trim();
+    //                sw.Write(_strBRANCHNAME + ",");
+    //                string _strSRNO = dt.Rows[j]["SR"].ToString();
+    //                sw.Write(_strSRNO + ",");
+    //                string _strFR_FORTNIGHT_DT = dt.Rows[j]["FR_FORTNIGHT_DT"].ToString().Trim();
+    //                sw.Write(_strFR_FORTNIGHT_DT + ",");
+    //                string _strTO_FORTNIGHT_DT = dt.Rows[j]["TO_FORTNIGHT_DT"].ToString().Trim();
+    //                sw.Write(_strTO_FORTNIGHT_DT + ",");
+    //                string _strTRANSACTION_DT = dt.Rows[j]["TRANSACTION_DT"].ToString();
+    //                sw.Write(_strTRANSACTION_DT + ",");
+    //                string _strDOCNO = dt.Rows[j]["DOCNO"].ToString();
+    //                sw.Write(_strDOCNO + ",");
+    //                string _strIECODE = dt.Rows[j]["IECODE"].ToString();
+    //                sw.Write(_strIECODE + ",");
+    //                string _strFORMSRNO = dt.Rows[j]["FORMSRNO"].ToString();
+    //                sw.Write(_strFORMSRNO + ",");
+    //                string _strPURPOSEID = dt.Rows[j]["PURPOSEID"].ToString().Trim();
+    //                sw.Write(_strPURPOSEID + ",");
+    //                string _strPORT_CODE = dt.Rows[j]["PORT_CODE"].ToString().Trim();
+    //                sw.Write(_strPORT_CODE + ",");
+    //                string _strSHIPPING_BILL_NO = dt.Rows[j]["SHIPPING_BILL_NO"].ToString();
+    //                sw.Write(_strSHIPPING_BILL_NO + ",");
+    //                string _strSHIPPING_BILL_DT = dt.Rows[j]["SHIPPING_BILL_DT"].ToString();
+    //                sw.Write(_strSHIPPING_BILL_DT + ",");
+    //                string _strCURR = dt.Rows[j]["CURR"].ToString();
+    //                sw.Write(_strCURR + ",");
+    //                string _strAMOUNT = dt.Rows[j]["AMOUNT"].ToString();
+    //                sw.Write(_strAMOUNT + ",");
+    //                string _strINR_AMOUNT = dt.Rows[j]["INR_AMOUNT"].ToString();
+    //                sw.Write(_strINR_AMOUNT + ",");
+    //                string _strAC_COUNTRY_CODE = dt.Rows[j]["AC_COUNTRY_CODE"].ToString();
+    //                sw.Write(_strAC_COUNTRY_CODE + ",");
+    //                string _strBN_COUNTRY_CODE = dt.Rows[j]["BN_COUNTRY_CODE"].ToString();
+    //                sw.Write(_strBN_COUNTRY_CODE + ",");
+                    
+    //                string _strCUSTOMSRNO = dt.Rows[j]["CUSTOMSRNO"].ToString().Trim();
+    //                sw.Write(_strCUSTOMSRNO + ",");
+    //                string _strLCINDICATION = dt.Rows[j]["LCINDICATION"].ToString().Trim();
+    //                sw.Write(_strLCINDICATION + ",");
+    //                string _strBENEFICIARY = dt.Rows[j]["BENEFICIARY"].ToString();
+    //                sw.Write(_strBENEFICIARY + ",");
+    //                string _strREMMITER = dt.Rows[j]["REMMITER"].ToString();
+    //                sw.Write(_strREMMITER + ",");                    
+    //                string _strVALUEDT = dt.Rows[j]["VALUEDT"].ToString();
+    //                sw.Write(_strVALUEDT + ",");
+    //                string _strVASTRO_AC = dt.Rows[j]["VASTRO_AC"].ToString().Trim();
+    //                sw.Write(_strVASTRO_AC + ",");
+    //                string _strMOD_TYPE = dt.Rows[j]["MOD_TYPE"].ToString();
+    //                sw.Write(_strMOD_TYPE + ",");
+    //                string _strSCHEDULE = dt.Rows[j]["SCHEDULE"].ToString();
+    //                sw.Write(_strSCHEDULE + ",");
+    //                string _strREAL_AMT = dt.Rows[j]["REAL_AMT"].ToString();
+    //                sw.Write(_strREAL_AMT + ",");
+    //                string _strEXRT = dt.Rows[j]["EXRT"].ToString();
+    //                sw.Write(_strEXRT + ",");
+    //                string _strBILLNO = dt.Rows[j]["BILLNO"].ToString();
+    //                sw.Write(_strBILLNO + ",");
+    //                string _strBANK_CODE = dt.Rows[j]["BANK_CODE"].ToString();
+    //                sw.Write(_strBANK_CODE + ",");
+    //                string _strBANKNAME = dt.Rows[j]["BANKNAME"].ToString();
+    //                sw.Write(_strBANKNAME + ",");
+    //                string _strREMMITERCountry = dt.Rows[j]["RemiCountry"].ToString();
+    //                sw.WriteLine(_strREMMITERCountry + ",");
+    //            }
+    //            string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/"+ todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4)+"/ERS_" + ddlBranch.SelectedItem.Value + "_" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4) + ".CSV";
+    //            txters.Text = _strAdCode + ".CSV";
+    //            HyperLink new_Link1 = new HyperLink();
+    //            new_Link1.Text = "Download File";
+    //            new_Link1.NavigateUrl = downloadpath;
+    //            new_Link1.CssClass = "buttonDefault";
+    //            ersfile.Controls.Add(new_Link1);
+    //        }
+    //        else
+    //        {
+    //            string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4) + "/ERS_" + ddlBranch.SelectedItem.Value + "_" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4) + ".CSV";
+    //            txters.Text = _strAdCode + ".CSV";
+    //            HyperLink new_Link1 = new HyperLink();
+    //            new_Link1.Text = "Download File";
+    //            new_Link1.NavigateUrl = downloadpath;
+    //            new_Link1.CssClass = "buttonDefault";
+    //            ersfile.Controls.Add(new_Link1);
+    //            labelMessage.Text = "Records Not Found.";
+    //            //ErrorMessage = "Records Not Found For RES Data.";
+    //        }
+    //        sw.Flush();
+    //        sw.Close();
+    //        sw.Dispose();
+    //        //REM END
+    //        #endregion
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        SqlParameter ADCODE = new SqlParameter("@ADCODE", SqlDbType.VarChar);
+    //        ADCODE.Value = ddlBranch.SelectedValue.ToString();
+
+    //        SqlParameter MENUNAME = new SqlParameter("@MENUNAME", SqlDbType.VarChar);
+    //        MENUNAME.Value = "File Extraction For HO";
+
+    //        SqlParameter IPAddress = new SqlParameter("@IPAddress", SqlDbType.VarChar);
+    //        IPAddress.Value = GetIPAddress();
+
+    //        SqlParameter URL = new SqlParameter("@URL", SqlDbType.VarChar);
+    //        URL.Value = HttpContext.Current.Request.Url.AbsoluteUri;
+
+    //        SqlParameter TYPE = new SqlParameter("@TYPE", SqlDbType.VarChar);
+    //        TYPE.Value = Ex.GetType().Name.ToString();
+
+    //        SqlParameter Message = new SqlParameter("@Message", SqlDbType.VarChar);
+    //        Message.Value = Ex.Message;
+
+    //        SqlParameter StackTrace = new SqlParameter("@StackTrace", SqlDbType.VarChar);
+    //        StackTrace.Value = Ex.StackTrace;
+
+    //        SqlParameter Source = new SqlParameter("@Source", SqlDbType.VarChar);
+    //        Source.Value = Ex.Source;
+
+    //        SqlParameter TargetSite = new SqlParameter("@TargetSite", SqlDbType.VarChar);
+    //        TargetSite.Value = Ex.TargetSite.ToString();
+
+    //        SqlParameter DATETIME = new SqlParameter("@DATETIME", SqlDbType.VarChar);
+    //        DATETIME.Value = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+    //        SqlParameter UserName = new SqlParameter("@UserName", SqlDbType.VarChar);
+    //        UserName.Value = Session["userName"].ToString().Trim(); ;
+
+    //        TF_DATA objDataInput = new TF_DATA();
+    //        string qryError = "TF_RET_ErrorException";
+    //        string dtInput1 = objDataInput.SaveDeleteData(qryError, ADCODE, MENUNAME, IPAddress, URL, Message, StackTrace, Source, TargetSite, DATETIME, TYPE, UserName);
+
+    //        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Page contains error.')", true);
+    //        Response.Redirect("ErrorPage.aspx");
+    //    }
+    //    return ErrorMessage;
+    //}
     public string RES_CSV_GENERATE()
     {
         string ErrorMessage = "";
@@ -175,139 +361,137 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
         {
             System.Globalization.DateTimeFormatInfo dateInfo = new System.Globalization.DateTimeFormatInfo();
             dateInfo.ShortDatePattern = "dd/MM/yyyy";
+
             DateTime documentDate = Convert.ToDateTime(txtFromDate.Text.Trim(), dateInfo);
             DateTime documentDate1 = Convert.ToDateTime(txtToDate.Text.Trim(), dateInfo);
+
             string todate = txtToDate.Text.Trim();
             string _directoryPath = "";
             string _strAdCode = "";
+
+            // 🔴 OLD CODE
+            // string Branchname = ddlBranch.SelectedItem.ToString().Trim();
+
+            // ✅ SAFE
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
-            //_directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/"+ todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4));
-            //_strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
-            
+            Branchname = System.Text.RegularExpressions.Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");
+
             string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
+
+            // 🔴 OLD CODE
+            // string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
+            // _directoryPath = basePath + "BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + datePart;
+
+            // ✅ SAFE PATH
             string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
-            
-            _directoryPath = basePath + "BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + datePart;
-            _strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + datePart;
+            string folderName = "BR_" + Branchname + "_ConsoFile";
+
+            _directoryPath = Path.Combine(basePath, folderName, datePart);
+
+            // 🔐 PATH TRAVERSAL CHECK
+            string fullBasePath = Path.GetFullPath(basePath);
+            string fullTargetPath = Path.GetFullPath(_directoryPath);
+
+            if (!fullTargetPath.StartsWith(fullBasePath))
+            {
+                throw new Exception("Invalid path detected.");
+            }
+
+            // 🔴 OLD CODE
+            // _strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + datePart;
+
+            // ✅ SAFE
+            string adCode = ddlBranch.SelectedItem.Value;
+            adCode = System.Text.RegularExpressions.Regex.Replace(adCode, @"[^a-zA-Z0-9]", "");
+            _strAdCode = "ERS_" + adCode + "_" + datePart;
 
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
             }
+
             SqlParameter p1 = new SqlParameter("@Branch", SqlDbType.VarChar);
             p1.Value = ddlBranch.SelectedItem.ToString().Trim();
+
             SqlParameter p2 = new SqlParameter("@startdate", SqlDbType.VarChar);
             p2.Value = documentDate.ToString("MM/dd/yyyy");
+
             SqlParameter p3 = new SqlParameter("@enddate", SqlDbType.VarChar);
             p3.Value = documentDate1.ToString("MM/dd/yyyy");
+
             SqlParameter p4 = new SqlParameter("@AdCode", SqlDbType.VarChar);
             p4.Value = ddlBranch.SelectedItem.Value;
+
             #region CSVFile
-            //REM FOR CSV FILE
+
             TF_DATA obj = new TF_DATA();
             string _qry = "TF_RET_DATACSV";
             DataTable dt = obj.getData(_qry, p1, p2, p3, p4);
-            string _filePath = _directoryPath + "/" + _strAdCode + ".CSV";
+
+            // 🔴 OLD CODE
+            // string _filePath = _directoryPath + "/" + _strAdCode + ".CSV";
+
+            // ✅ SAFE
+            string _filePath = Path.Combine(_directoryPath, _strAdCode + ".CSV");
+
             StreamWriter sw;
             sw = File.CreateText(_filePath);
+
             string _strHeader = "ADCODE,BRANCHNAME,SRNO,FR_FORTNIGHT_DT,TO_FORTNIGHT_DT,TRANSACTION_DT,DOCNO,IECODE,FORMSRNO,PURPOSE_ID,PORT_CODE,"
                 + "SHIPPING_BILL_NO,SHIPPING_BILL_DT,CURR,AMOUNT,INR_AMOUNT,AC_COUNTRY_CODE,BN_COUNTRY_CODE,CUSTOMSRNO,LCINDICATION,BENEFICIARYNAME,"
                 + "REMMITERNAME,VALUEDT,VASTRO_AC,MOD_TYPE,SCHEDULENO,REALISED_AMT,EXRT,BILL_NO,Bank Code,Bank Name,IMPORTER/EXPORTER COUNTRY";
+
             sw.WriteLine(_strHeader);
+
             if (dt.Rows.Count > 0)
             {
                 for (int j = 0; j < dt.Rows.Count; j++)
                 {
-                    string _strADCODE = dt.Rows[j]["ADCODE"].ToString().Trim();
-                    sw.Write(_strADCODE + ",");
-                    string _strBRANCHNAME = dt.Rows[j]["BRANCHNAME"].ToString().Trim();
-                    sw.Write(_strBRANCHNAME + ",");
-                    string _strSRNO = dt.Rows[j]["SR"].ToString();
-                    sw.Write(_strSRNO + ",");
-                    string _strFR_FORTNIGHT_DT = dt.Rows[j]["FR_FORTNIGHT_DT"].ToString().Trim();
-                    sw.Write(_strFR_FORTNIGHT_DT + ",");
-                    string _strTO_FORTNIGHT_DT = dt.Rows[j]["TO_FORTNIGHT_DT"].ToString().Trim();
-                    sw.Write(_strTO_FORTNIGHT_DT + ",");
-                    string _strTRANSACTION_DT = dt.Rows[j]["TRANSACTION_DT"].ToString();
-                    sw.Write(_strTRANSACTION_DT + ",");
-                    string _strDOCNO = dt.Rows[j]["DOCNO"].ToString();
-                    sw.Write(_strDOCNO + ",");
-                    string _strIECODE = dt.Rows[j]["IECODE"].ToString();
-                    sw.Write(_strIECODE + ",");
-                    string _strFORMSRNO = dt.Rows[j]["FORMSRNO"].ToString();
-                    sw.Write(_strFORMSRNO + ",");
-                    string _strPURPOSEID = dt.Rows[j]["PURPOSEID"].ToString().Trim();
-                    sw.Write(_strPURPOSEID + ",");
-                    string _strPORT_CODE = dt.Rows[j]["PORT_CODE"].ToString().Trim();
-                    sw.Write(_strPORT_CODE + ",");
-                    string _strSHIPPING_BILL_NO = dt.Rows[j]["SHIPPING_BILL_NO"].ToString();
-                    sw.Write(_strSHIPPING_BILL_NO + ",");
-                    string _strSHIPPING_BILL_DT = dt.Rows[j]["SHIPPING_BILL_DT"].ToString();
-                    sw.Write(_strSHIPPING_BILL_DT + ",");
-                    string _strCURR = dt.Rows[j]["CURR"].ToString();
-                    sw.Write(_strCURR + ",");
-                    string _strAMOUNT = dt.Rows[j]["AMOUNT"].ToString();
-                    sw.Write(_strAMOUNT + ",");
-                    string _strINR_AMOUNT = dt.Rows[j]["INR_AMOUNT"].ToString();
-                    sw.Write(_strINR_AMOUNT + ",");
-                    string _strAC_COUNTRY_CODE = dt.Rows[j]["AC_COUNTRY_CODE"].ToString();
-                    sw.Write(_strAC_COUNTRY_CODE + ",");
-                    string _strBN_COUNTRY_CODE = dt.Rows[j]["BN_COUNTRY_CODE"].ToString();
-                    sw.Write(_strBN_COUNTRY_CODE + ",");
-                    
-                    string _strCUSTOMSRNO = dt.Rows[j]["CUSTOMSRNO"].ToString().Trim();
-                    sw.Write(_strCUSTOMSRNO + ",");
-                    string _strLCINDICATION = dt.Rows[j]["LCINDICATION"].ToString().Trim();
-                    sw.Write(_strLCINDICATION + ",");
-                    string _strBENEFICIARY = dt.Rows[j]["BENEFICIARY"].ToString();
-                    sw.Write(_strBENEFICIARY + ",");
-                    string _strREMMITER = dt.Rows[j]["REMMITER"].ToString();
-                    sw.Write(_strREMMITER + ",");                    
-                    string _strVALUEDT = dt.Rows[j]["VALUEDT"].ToString();
-                    sw.Write(_strVALUEDT + ",");
-                    string _strVASTRO_AC = dt.Rows[j]["VASTRO_AC"].ToString().Trim();
-                    sw.Write(_strVASTRO_AC + ",");
-                    string _strMOD_TYPE = dt.Rows[j]["MOD_TYPE"].ToString();
-                    sw.Write(_strMOD_TYPE + ",");
-                    string _strSCHEDULE = dt.Rows[j]["SCHEDULE"].ToString();
-                    sw.Write(_strSCHEDULE + ",");
-                    string _strREAL_AMT = dt.Rows[j]["REAL_AMT"].ToString();
-                    sw.Write(_strREAL_AMT + ",");
-                    string _strEXRT = dt.Rows[j]["EXRT"].ToString();
-                    sw.Write(_strEXRT + ",");
-                    string _strBILLNO = dt.Rows[j]["BILLNO"].ToString();
-                    sw.Write(_strBILLNO + ",");
-                    string _strBANK_CODE = dt.Rows[j]["BANK_CODE"].ToString();
-                    sw.Write(_strBANK_CODE + ",");
-                    string _strBANKNAME = dt.Rows[j]["BANKNAME"].ToString();
-                    sw.Write(_strBANKNAME + ",");
-                    string _strREMMITERCountry = dt.Rows[j]["RemiCountry"].ToString();
-                    sw.WriteLine(_strREMMITERCountry + ",");
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        sw.Write(dt.Rows[j][i].ToString().Trim());
+
+                        if (i != dt.Columns.Count - 1)
+                            sw.Write(",");
+                    }
+                    sw.WriteLine();
                 }
-                string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/"+ todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4)+"/ERS_" + ddlBranch.SelectedItem.Value + "_" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4) + ".CSV";
+
+                // 🔴 OLD CODE
+                // string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/"+ todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4)+"/ERS_" + ddlBranch.SelectedItem.Value + "_" + datePart + ".CSV";
+
+                // ✅ SAME STRUCTURE (SAFE VALUES USED)
+                string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/ERS_" + adCode + "_" + datePart + ".CSV";
+
                 txters.Text = _strAdCode + ".CSV";
+
                 HyperLink new_Link1 = new HyperLink();
                 new_Link1.Text = "Download File";
                 new_Link1.NavigateUrl = downloadpath;
                 new_Link1.CssClass = "buttonDefault";
+
                 ersfile.Controls.Add(new_Link1);
             }
             else
             {
-                string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4) + "/ERS_" + ddlBranch.SelectedItem.Value + "_" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4) + ".CSV";
+                string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/ERS_" + adCode + "_" + datePart + ".CSV";
+
                 txters.Text = _strAdCode + ".CSV";
+
                 HyperLink new_Link1 = new HyperLink();
                 new_Link1.Text = "Download File";
                 new_Link1.NavigateUrl = downloadpath;
                 new_Link1.CssClass = "buttonDefault";
+
                 ersfile.Controls.Add(new_Link1);
+
                 labelMessage.Text = "Records Not Found.";
-                //ErrorMessage = "Records Not Found For RES Data.";
             }
+
             sw.Flush();
             sw.Close();
             sw.Dispose();
-            //REM END
+
             #endregion
         }
         catch (Exception Ex)
@@ -343,7 +527,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             DATETIME.Value = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
 
             SqlParameter UserName = new SqlParameter("@UserName", SqlDbType.VarChar);
-            UserName.Value = Session["userName"].ToString().Trim(); ;
+            UserName.Value = Session["userName"].ToString().Trim();
 
             TF_DATA objDataInput = new TF_DATA();
             string qryError = "TF_RET_ErrorException";
