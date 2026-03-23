@@ -181,10 +181,15 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             string _directoryPath = "";
             string _strAdCode = "";
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
-
-            _directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/"+ todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4));
+            //_directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/"+ todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4));
+            //_strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
             
-            _strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
+            string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
+            string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
+            
+            _directoryPath = basePath + "BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + datePart;
+            _strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + datePart;
+
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
