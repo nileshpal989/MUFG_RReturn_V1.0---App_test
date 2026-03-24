@@ -741,11 +741,6 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
             string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
 
-            // 🔴 OLD CODE
-            // string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
-            // _directoryPath = basePath + "BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + datePart;
-
-            // ✅ SAFE PATH
             string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
             string folderName = "BR_" + Branchname + "_ConsoFile";
 
@@ -767,7 +762,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             string adCode = ddlBranch.SelectedItem.Value;
             adCode = System.Text.RegularExpressions.Regex.Replace(adCode, @"[^a-zA-Z0-9]", "");
             _strAdCode = "ERS_" + adCode + "_" + datePart;
-
+            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
