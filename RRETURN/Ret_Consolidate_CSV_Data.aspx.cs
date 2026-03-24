@@ -171,7 +171,8 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
 
                 string safeBranch = Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");
                 string safeAdCode = Regex.Replace(AdCode, @"[^a-zA-Z0-9]", "");
-
+                safeBranch = System.Text.RegularExpressions.Regex.Replace(safeBranch, @"[^a-zA-Z0-9]", "");
+                safeAdCode = System.Text.RegularExpressions.Regex.Replace(safeAdCode, @"[^a-zA-Z0-9]", "");
                 string folderPath = Path.Combine(basePath, "BR_" + safeBranch + "_ConsoFile", filedate);
 
                 if (!Path.GetFullPath(folderPath).StartsWith(Path.GetFullPath(basePath)))
@@ -221,6 +222,8 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
 
                 string safeBranch = Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");
                 string safeAdCode = Regex.Replace(AdCode, @"[^a-zA-Z0-9]", "");
+                safeBranch = System.Text.RegularExpressions.Regex.Replace(safeBranch, @"[^a-zA-Z0-9]", "");
+                safeAdCode = System.Text.RegularExpressions.Regex.Replace(safeAdCode, @"[^a-zA-Z0-9]", "");
 
                 string folderPath = Path.Combine(basePath, "BR_" + safeBranch + "_ConsoFile", filedate);
 
@@ -300,7 +303,8 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
             {
                 string safeBranch = Regex.Replace(dt.Rows[J][0].ToString(), @"[^a-zA-Z0-9]", "");
                 string safeAdCode = Regex.Replace(dt.Rows[J][1].ToString(), @"[^a-zA-Z0-9]", "");
-
+                safeBranch = System.Text.RegularExpressions.Regex.Replace(safeBranch, @"[^a-zA-Z0-9]", "");
+                safeAdCode = System.Text.RegularExpressions.Regex.Replace(safeAdCode, @"[^a-zA-Z0-9]", "");
                 string folderPath = Path.Combine(basePath, "BR_" + safeBranch + "_ConsoFile", filedate);
 
                 if (!Path.GetFullPath(folderPath).StartsWith(Path.GetFullPath(basePath)))
@@ -349,7 +353,8 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
             {
                 string safeBranch = Regex.Replace(dt.Rows[J][0].ToString(), @"[^a-zA-Z0-9]", "");
                 string safeAdCode = Regex.Replace(dt.Rows[J][1].ToString(), @"[^a-zA-Z0-9]", "");
-
+                safeBranch = System.Text.RegularExpressions.Regex.Replace(safeBranch, @"[^a-zA-Z0-9]", "");
+                safeAdCode = System.Text.RegularExpressions.Regex.Replace(safeAdCode, @"[^a-zA-Z0-9]", "");
                 string folderPath = Path.Combine(basePath, "BR_" + safeBranch + "_ConsoFile", filedate);
 
                 if (!Path.GetFullPath(folderPath).StartsWith(Path.GetFullPath(basePath)))
