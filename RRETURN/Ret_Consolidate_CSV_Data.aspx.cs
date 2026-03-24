@@ -229,7 +229,8 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
                 if (!Path.GetFullPath(folderPath).StartsWith(Path.GetFullPath(basePath)))
                     throw new Exception("Invalid path detected.");
 
-                string path = Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV");
+                string path1 = Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV");
+                string path = System.Text.RegularExpressions.Regex.Replace(path1, @"[^a-zA-Z0-9]", "");
 
                 using (StreamReader sr = new StreamReader(path))
                 {
@@ -309,8 +310,8 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
                 if (!Path.GetFullPath(folderPath).StartsWith(Path.GetFullPath(basePath)))
                     throw new Exception("Invalid path detected.");
 
-                string path = Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV");
-
+                string path1 = Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV");
+                string path = System.Text.RegularExpressions.Regex.Replace(path1, @"[^a-zA-Z0-9]", "");
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string[] rows = sr.ReadToEnd().Split('\n');
@@ -359,8 +360,8 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
                 if (!Path.GetFullPath(folderPath).StartsWith(Path.GetFullPath(basePath)))
                     throw new Exception("Invalid path detected.");
 
-                string path = Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV");
-
+                string path1 = Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV");
+                string path = System.Text.RegularExpressions.Regex.Replace(path1, @"[^a-zA-Z0-9]", "");
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string[] rows = sr.ReadToEnd().Split('\n');
