@@ -755,9 +755,6 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
                 throw new Exception("Invalid path detected.");
             }
 
-            // 🔴 OLD CODE
-            // _strAdCode = "ERS_" + ddlBranch.SelectedItem.Value + "_" + datePart;
-
             // ✅ SAFE
             string adCode = ddlBranch.SelectedItem.Value;
             adCode = System.Text.RegularExpressions.Regex.Replace(adCode, @"[^a-zA-Z0-9]", "");
@@ -942,7 +939,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             string adCode = ddlBranch.SelectedItem.Value;
             adCode = System.Text.RegularExpressions.Regex.Replace(adCode, @"[^a-zA-Z0-9]", "");
             _strAdCode = "Nostro_" + adCode + "_" + datePart;
-
+            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
@@ -1063,7 +1060,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             string adCode = ddlBranch.SelectedItem.Value;
             adCode = System.Text.RegularExpressions.Regex.Replace(adCode, @"[^a-zA-Z0-9]", "");
             _strAdCode = "Vostro_" + adCode + "_" + datePart;
-
+            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);

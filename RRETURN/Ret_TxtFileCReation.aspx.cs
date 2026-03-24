@@ -67,7 +67,7 @@ public partial class RRETURN_Ret_TxtFileCReation : System.Web.UI.Page
             string _strAdCode = "";
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
             _strAdCode = ddlBranch.Text.ToString().Trim().Substring(0, 3);
-            
+            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             _directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/ERS/BR_"+Branchname.Replace(" ","")+"_RBI_ERS");
             
             
