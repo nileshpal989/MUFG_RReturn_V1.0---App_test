@@ -177,13 +177,12 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
 
                 if (!Path.GetFullPath(folderPath).StartsWith(Path.GetFullPath(basePath)))
                     throw new Exception("Invalid path detected.");
-                string ERS_Path = Path.GetFullPath(Path.Combine(basePath, "ERS_" + safeAdCode + "_" + filedate + ".CSV"));
-                string NOSTRO_Path = Path.GetFullPath(Path.Combine(basePath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV"));
-                string VOSTRO_Path = Path.GetFullPath(Path.Combine(basePath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV"));
-                //string ERS_Path = Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV");
-                //string NOSTRO_Path = Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV");
-                //string VOSTRO_Path = Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV");
-
+                string ERS_Path = Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV");
+                string NOSTRO_Path = Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV");
+                string VOSTRO_Path = Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV");
+                ERS_Path = System.Text.RegularExpressions.Regex.Replace(ERS_Path, @"[^a-zA-Z0-9]", "");
+                NOSTRO_Path = System.Text.RegularExpressions.Regex.Replace(NOSTRO_Path, @"[^a-zA-Z0-9]", "");
+                VOSTRO_Path = System.Text.RegularExpressions.Regex.Replace(VOSTRO_Path, @"[^a-zA-Z0-9]", "");
                 if (File.Exists(ERS_Path) && File.Exists(NOSTRO_Path) && File.Exists(VOSTRO_Path))
                 {
                     ErrorMessage.Append(safeBranch + " File Received.");
