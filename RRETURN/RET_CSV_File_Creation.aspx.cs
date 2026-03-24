@@ -99,7 +99,7 @@ public partial class RRETURN_RET_CSV_File_Creation : System.Web.UI.Page
             // _strAdCode = "DataCheck_" + ddlBranch.SelectedItem.Value + "_" + datePart;
 
             _strAdCode = "DataCheck_" + safeAdCode + "_" + datePart;
-
+            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);

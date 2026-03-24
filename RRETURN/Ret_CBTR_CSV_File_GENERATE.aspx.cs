@@ -102,6 +102,7 @@ public partial class Ret_CBTR_CSV_File_GENERATE : System.Web.UI.Page
             _directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/CBTR/BR_" + Branchname.Replace(" ", "") + "_CBTRFile");
             
             _strAdCode = "CBTR_" + ddlBranch.SelectedItem.Value + "_" +todate.Substring(3, 2) + todate.Substring(6, 4);
+            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
