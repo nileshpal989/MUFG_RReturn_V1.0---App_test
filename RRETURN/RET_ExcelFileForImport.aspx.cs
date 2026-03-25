@@ -85,6 +85,7 @@ public partial class RRETURN_RET_ExcelFileForImport : System.Web.UI.Page
                     Directory.CreateDirectory(_directoryPath);
                 }
                 string _filePath = _directoryPath + "/Invoice_Upload_From_" + _fromdate +"_To_"+_todate+ ".xlsx";
+                _filePath = System.Text.RegularExpressions.Regex.Replace(_filePath, @"[^a-zA-Z0-9]", "");
                 if (dt.Rows.Count > 0)
                 {
                     using (XLWorkbook wb = new XLWorkbook())
@@ -92,7 +93,7 @@ public partial class RRETURN_RET_ExcelFileForImport : System.Web.UI.Page
                         wb.Worksheets.Add(dt, "Sheet1");
                         using (MemoryStream MyMemoryStream = new MemoryStream())
                         {
-                            wb.SaveAs(MyMemoryStream);
+                            wb.SaveAs(MyMemoryStream);  
                             FileStream file = new FileStream(_filePath, FileMode.Create, FileAccess.Write);
                             MyMemoryStream.WriteTo(file);
                             file.Close();
