@@ -25,7 +25,11 @@ public partial class RRETURN_RET_ViewReturnData : System.Web.UI.Page
                 ddlrecordperpage.SelectedValue = "20";
                 fillBranch();
                 ddlBranch.SelectedValue = Session["userADCode"].ToString();
-                lblAdcodeDesc.Text = Session["userADCode"].ToString();
+                //lblAdcodeDesc.Text = Session["userADCode"].ToString();
+                if (Session["userADCode"] != null)
+                {
+                    lblAdcodeDesc.Text = Server.HtmlEncode(Session["userADCode"].ToString());
+                }
                 //ddlBranch.Enabled = false;
                 fillBank();
                 fillGrid();

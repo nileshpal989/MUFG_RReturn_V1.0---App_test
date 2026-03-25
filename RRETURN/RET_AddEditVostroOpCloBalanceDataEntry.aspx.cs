@@ -30,7 +30,11 @@ public partial class RRETURN_RET_AddEditVostroOpCloBalanceDataEntry : System.Web
                 txtToDate.Text = Session["ToRelDt"].ToString().Trim();
                 fillBranch();
                 ddlBranch.SelectedValue = Session["userADCode"].ToString();
-                lblAdcodeDesc.Text = Session["userADCode"].ToString();
+                //lblAdcodeDesc.Text = Session["userADCode"].ToString();
+                if (Session["userADCode"] != null)
+                {
+                    lblAdcodeDesc.Text = Server.HtmlEncode(Session["userADCode"].ToString());
+                }
                 //ddlBranch.Enabled = false;
 
                 
