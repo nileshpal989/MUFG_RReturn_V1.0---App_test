@@ -16,8 +16,11 @@ public partial class RRETURN_Ret_Selction : System.Web.UI.Page
             DateTime nowDate = System.DateTime.Now;
             if (Session["LoggedUserId"] != null)
             {
-                lblUserName.Text = "Welcome, " + Session["userName"].ToString().Trim();
-                lblRole.Text = "| Role: " + Session["userRole"].ToString().Trim();
+                
+                //lblUserName.Text = "Welcome, " + Session["userName"].ToString().Trim();
+                //lblRole.Text = "| Role: " + Session["userRole"].ToString().Trim();
+                lblUserName.Text = "Welcome, " + Server.HtmlEncode(Session["userName"].ToString());
+                lblRole.Text = "| Role: " + Server.HtmlEncode(Session["userRole"].ToString());
                 lblTime.Text = nowDate.ToLongDateString();
             }
             GetFromToDate();
