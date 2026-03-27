@@ -24,12 +24,17 @@ public partial class Reports_RRETURNReports_rptRRETURN_Schedule : System.Web.UI.
                 fillBranch();
                 ddlBranch.SelectedValue = Session["userADCode"].ToString();
                 //ddlBranch.Enabled = false;
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
                 txtfromDate.Text = Session["FrRelDt"].ToString();
                 txtToDate.Text = Session["ToRelDt"].ToString();
                 // txtCurrency.Attributes.Add("onkeydown", "return CustId(event);");
                 //  btCurList.Attributes.Add("onclick", "return Custhelp();");
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 rdbAllCurrency.Attributes.Add("onclick", "return toogleDisplay();");
                 rdbSelectedCurrency.Attributes.Add("onclick", "return toogleDisplay();");
                 rdbSchedule1A.Attributes.Add("onclick", "return toogleDisplay();");

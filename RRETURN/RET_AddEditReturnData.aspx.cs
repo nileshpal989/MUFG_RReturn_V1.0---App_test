@@ -43,7 +43,12 @@ public partial class RRETURN_RET_AddEditReturnData : System.Web.UI.Page
                     //fillBankCode();
                     if (Request.QueryString["mode"].Trim() != "add")
                     {
-                        lblAdcode.Text = Request.QueryString["Adcode"].ToString();
+                        //lblAdcode.Text = Request.QueryString["Adcode"].ToString();
+                        string adCode = Request.QueryString["Adcode"];
+                        if (!string.IsNullOrEmpty(adCode))
+                        {
+                            lblAdcode.Text = Server.HtmlEncode(adCode);
+                        }
                         txtBranchName.Text = Request.QueryString["BranchName"].ToString();
                         txtFromDate.Text = Request.QueryString["fromdate"].ToString();
                         txtToDate.Text = Request.QueryString["todate"].ToString();
@@ -54,7 +59,12 @@ public partial class RRETURN_RET_AddEditReturnData : System.Web.UI.Page
                     }
                     else
                     {
-                        lblAdcode.Text = Request.QueryString["Adcode"].ToString();
+                        //lblAdcode.Text = Request.QueryString["Adcode"].ToString();
+                        string adCode = Request.QueryString["Adcode"];
+                        if (!string.IsNullOrEmpty(adCode))
+                        {
+                            lblAdcode.Text = Server.HtmlEncode(adCode);
+                        }
                         txtBranchName.Text = Request.QueryString["BranchName"].ToString();
                         txtFromDate.Text = Request.QueryString["fromdate"].ToString();
                         txtToDate.Text = Request.QueryString["todate"].ToString();
@@ -1172,7 +1182,8 @@ public partial class RRETURN_RET_AddEditReturnData : System.Web.UI.Page
             {
                 value += "0";
             }
-            currentField.Text = value + currentField.Text;
+            //currentField.Text = value + currentField.Text;
+            currentField.Text = Server.HtmlEncode(value) + Server.HtmlEncode(currentField.Text);
         }
     }
     protected void checkOthers()

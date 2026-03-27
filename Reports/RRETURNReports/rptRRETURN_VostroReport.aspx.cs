@@ -27,10 +27,15 @@ public partial class Reports_RRETURNReports_rptRRETURN_VostroReport : System.Web
                 hdnBranchName.Value = ddlBranch.SelectedItem.Text;
                 hdnCurrency.Value = ddlCurrency.SelectedItem.Text;
                 //ddlBranch.Enabled = false;
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
                 txtfromDate.Text = Session["FrRelDt"].ToString();
                 txtToDate.Text = Session["ToRelDt"].ToString();
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 btnSave.Attributes.Add("onclick", "return Generate();");
                 btnAuthSignList.Attributes.Add("onclick", "return OpenAuthSignCodeList('mouseClick');");
                 //btnCurrencyList.Attributes.Add("onclick", "return OpenCurrencyList('6');");

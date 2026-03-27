@@ -31,7 +31,12 @@ public partial class Reports_RRETURNReports_rptRRETURN_Datachecklist : System.We
                 txtFromDate.Text = Session["FrRelDt"].ToString();
                 txtToDate.Text = Session["ToRelDt"].ToString();               
                 btnSave.Attributes.Add("onclick", "return validateSave();");
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 rdbTypewise.Checked = true;
                 fillBranch();
                 ddlBranch.SelectedValue = Session["userADCode"].ToString();                
