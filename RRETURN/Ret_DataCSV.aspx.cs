@@ -817,7 +817,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
                 // ✅ SAME STRUCTURE (SAFE VALUES USED)
                 string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/ERS_" + adCode + "_" + datePart + ".CSV";
-
+                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
                 txters.Text = _strAdCode + ".CSV";
 
                 HyperLink new_Link1 = new HyperLink();
