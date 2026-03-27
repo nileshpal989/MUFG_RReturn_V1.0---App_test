@@ -444,7 +444,9 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
                 HyperLink link = new HyperLink();
                 link.Text = "Download File";
-                link.NavigateUrl = downloadpath;
+                //link.NavigateUrl = downloadpath;
+                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
+                link.NavigateUrl = ResolveUrl(downloadpath);
                 link.CssClass = "buttonDefault";
                 nostrofile.Controls.Add(link);
             }
@@ -456,7 +458,9 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
                 HyperLink link = new HyperLink();
                 link.Text = "Download File";
-                link.NavigateUrl = downloadpath;
+                //link.NavigateUrl = downloadpath;
+                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
+                link.NavigateUrl = ResolveUrl(downloadpath);
                 link.CssClass = "buttonDefault";
                 nostrofile.Controls.Add(link);
 
@@ -565,7 +569,9 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
                 HyperLink link = new HyperLink();
                 link.Text = "Download File";
-                link.NavigateUrl = downloadpath;
+                //link.NavigateUrl = downloadpath;
+                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
+                link.NavigateUrl = ResolveUrl(downloadpath);
                 link.CssClass = "buttonDefault";
                 vostrofile.Controls.Add(link);
             }
@@ -577,7 +583,9 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
                 HyperLink link = new HyperLink();
                 link.Text = "Download File";
-                link.NavigateUrl = downloadpath;
+                //link.NavigateUrl = downloadpath;
+                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
+                link.NavigateUrl = ResolveUrl(downloadpath);
                 link.CssClass = "buttonDefault";
                 vostrofile.Controls.Add(link);
 
