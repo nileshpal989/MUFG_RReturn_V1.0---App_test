@@ -817,12 +817,12 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
                 // ✅ SAME STRUCTURE (SAFE VALUES USED)
                 string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/ERS_" + adCode + "_" + datePart + ".CSV";
-                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
                 txters.Text = _strAdCode + ".CSV";
 
                 HyperLink new_Link1 = new HyperLink();
                 new_Link1.Text = "Download File";
-                new_Link1.NavigateUrl = downloadpath;
+                //new_Link1.NavigateUrl = downloadpath;
+                new_Link1.NavigateUrl = ResolveUrl(downloadpath);
                 new_Link1.CssClass = "buttonDefault";
 
                 ersfile.Controls.Add(new_Link1);
@@ -830,12 +830,13 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             else
             {
                 string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/ERS_" + adCode + "_" + datePart + ".CSV";
-
                 txters.Text = _strAdCode + ".CSV";
 
                 HyperLink new_Link1 = new HyperLink();
                 new_Link1.Text = "Download File";
-                new_Link1.NavigateUrl = downloadpath;
+                //new_Link1.NavigateUrl = downloadpath;
+                new_Link1.NavigateUrl = ResolveUrl(downloadpath);
+
                 new_Link1.CssClass = "buttonDefault";
 
                 ersfile.Controls.Add(new_Link1);
