@@ -344,40 +344,87 @@ public partial class RRETURN_RET_AddEditNostroOpCloBalanceDataEntry : System.Web
         DataTable dt = ObjData.getData(_query, p1, p2, p3, p4);
         if (dt.Rows.Count > 0)
         {
-            OBCashBalanceDR.Text = dt.Rows[0]["OP_CASH_D"].ToString().Trim();
-            OBCashBalanceCR.Text = dt.Rows[0]["OP_CASH_C"].ToString().Trim();
-            OBSuspAccountDR.Text = dt.Rows[0]["OP_SUSP_D"].ToString().Trim();
-            OBSuspAccountCR.Text = dt.Rows[0]["OP_SUSP_C"].ToString().Trim();
-            OBDepositOtherDR.Text = dt.Rows[0]["OP_DEP_OTH_D"].ToString().Trim();
-            OBDepositOtherCR.Text = dt.Rows[0]["OP_DEP_OTH_C"].ToString().Trim();
-            OBDepositRBIDR.Text = dt.Rows[0]["OP_DEP_RBI_D"].ToString().Trim();
-            OBDepositRBICR.Text = dt.Rows[0]["OP_DEP_RBI_C"].ToString().Trim();
-            OBFixedDepositDR.Text = dt.Rows[0]["OP_FD_D"].ToString().Trim();
-            OBFixedDepositCR.Text = dt.Rows[0]["OP_FD_C"].ToString().Trim();
-            OBTreasuryBillDR.Text = dt.Rows[0]["OP_TB_D"].ToString().Trim();
-            OBTreasuryBillCR.Text = dt.Rows[0]["OP_TB_C"].ToString().Trim();
-            OBSecuritiesDR.Text = dt.Rows[0]["OP_SS_D"].ToString().Trim();
-            OBSecuritiesCR.Text = dt.Rows[0]["OP_SS_C"].ToString().Trim();
-            OBFCurrencyDR.Text = dt.Rows[0]["OP_FCLO_D"].ToString().Trim();
-            OBFCurrencyCR.Text = dt.Rows[0]["OP_FCLO_C"].ToString().Trim();
+            //OBCashBalanceDR.Text = dt.Rows[0]["OP_CASH_D"].ToString().Trim();
+            //OBCashBalanceCR.Text = dt.Rows[0]["OP_CASH_C"].ToString().Trim();
+            //OBSuspAccountDR.Text = dt.Rows[0]["OP_SUSP_D"].ToString().Trim();
+            //OBSuspAccountCR.Text = dt.Rows[0]["OP_SUSP_C"].ToString().Trim();
+            //OBDepositOtherDR.Text = dt.Rows[0]["OP_DEP_OTH_D"].ToString().Trim();
+            //OBDepositOtherCR.Text = dt.Rows[0]["OP_DEP_OTH_C"].ToString().Trim();
+            //OBDepositRBIDR.Text = dt.Rows[0]["OP_DEP_RBI_D"].ToString().Trim();
+            //OBDepositRBICR.Text = dt.Rows[0]["OP_DEP_RBI_C"].ToString().Trim();
+            //OBFixedDepositDR.Text = dt.Rows[0]["OP_FD_D"].ToString().Trim();
+            //OBFixedDepositCR.Text = dt.Rows[0]["OP_FD_C"].ToString().Trim();
+            //OBTreasuryBillDR.Text = dt.Rows[0]["OP_TB_D"].ToString().Trim();
+            //OBTreasuryBillCR.Text = dt.Rows[0]["OP_TB_C"].ToString().Trim();
+            //OBSecuritiesDR.Text = dt.Rows[0]["OP_SS_D"].ToString().Trim();
+            //OBSecuritiesCR.Text = dt.Rows[0]["OP_SS_C"].ToString().Trim();
+            //OBFCurrencyDR.Text = dt.Rows[0]["OP_FCLO_D"].ToString().Trim();
+            //OBFCurrencyCR.Text = dt.Rows[0]["OP_FCLO_C"].ToString().Trim();
+            //txtOpeningBalanceAmount.Text = dt.Rows[0]["OP_TOT_D"].ToString().Trim();
+            //txtOBDisabled.Text = dt.Rows[0]["OP_TOT_C"].ToString().Trim();
+            //CBCashBalanceDR.Text = dt.Rows[0]["CL_CASH_D"].ToString().Trim();
+            //CBCashBalanceCR.Text = dt.Rows[0]["CL_CASH_C"].ToString().Trim();
+            //CBSuspAccountDR.Text = dt.Rows[0]["CL_SUSP_D"].ToString().Trim();
+            //CBSuspAccountCR.Text = dt.Rows[0]["CL_SUSP_C"].ToString().Trim();
+            //CBDepositOtherDR.Text = dt.Rows[0]["CL_DEP_OTH_D"].ToString().Trim();
+            //CBDepositOtherCR.Text = dt.Rows[0]["CL_DEP_OTH_C"].ToString().Trim();
+            //CBDepositRBIDR.Text = dt.Rows[0]["CL_DEP_RBI_D"].ToString().Trim();
+            //CBDepositRBICR.Text = dt.Rows[0]["CL_DEP_RBI_C"].ToString().Trim();
+            //CBFixedDepositDR.Text = dt.Rows[0]["CL_FD_D"].ToString().Trim();
+            //CBFixedDepositCR.Text = dt.Rows[0]["CL_FD_C"].ToString().Trim();
+            //CBTreasuryBillsDR.Text = dt.Rows[0]["CL_TB_D"].ToString().Trim();
+            //CBTreasuryBillsCR.Text = dt.Rows[0]["CL_TB_C"].ToString().Trim();
+            //CBSecuritiesDR.Text = dt.Rows[0]["CL_SS_D"].ToString().Trim();
+            //CBSecuritiesCR.Text = dt.Rows[0]["CL_SS_C"].ToString().Trim();
+            //CBForeignCurrencyDR.Text = dt.Rows[0]["CL_FCLO_D"].ToString().Trim();
+            //CBForeignCurrencyCR.Text = dt.Rows[0]["CL_FCLO_C"].ToString().Trim();
+            //txtClosingBalanceAmount.Text = dt.Rows[0]["CL_TOT_D"].ToString().Trim();
+            //txtCBDisabled.Text = dt.Rows[0]["CL_TOT_C"].ToString().Trim();
+            //txtEEFCAccounts.Text = dt.Rows[0]["EEFCAC"].ToString().Trim();
+            //txtEFCAccounts.Text = dt.Rows[0]["EFCAC"].ToString().Trim();
+            //txtRFCAccounts.Text = dt.Rows[0]["RFCAC"].ToString().Trim();
+            //txtEscrowFCAccounts.Text = dt.Rows[0]["ESCROWAC"].ToString().Trim();
+            //txtFCNRBAccounts.Text = dt.Rows[0]["FCNRAC"].ToString().Trim();
+            //txtOtherFCAccounts.Text = dt.Rows[0]["OTHERAC"].ToString().Trim();
+
+            OBCashBalanceDR.Text = Server.HtmlEncode(dt.Rows[0]["OP_CASH_D"].ToString().Trim());
+            OBCashBalanceCR.Text = Server.HtmlEncode(dt.Rows[0]["OP_CASH_C"].ToString().Trim());
+            OBSuspAccountDR.Text = Server.HtmlEncode(dt.Rows[0]["OP_SUSP_D"].ToString().Trim());
+            OBSuspAccountCR.Text = Server.HtmlEncode(dt.Rows[0]["OP_SUSP_C"].ToString().Trim());
+            OBDepositOtherDR.Text = Server.HtmlEncode(dt.Rows[0]["OP_DEP_OTH_D"].ToString().Trim());
+            OBDepositOtherCR.Text = Server.HtmlEncode(dt.Rows[0]["OP_DEP_OTH_C"].ToString().Trim());
+            OBDepositRBIDR.Text = Server.HtmlEncode(dt.Rows[0]["OP_DEP_RBI_D"].ToString().Trim());
+            OBDepositRBICR.Text = Server.HtmlEncode(dt.Rows[0]["OP_DEP_RBI_C"].ToString().Trim());
+            OBFixedDepositDR.Text = Server.HtmlEncode(dt.Rows[0]["OP_FD_D"].ToString().Trim());
+            OBFixedDepositCR.Text = Server.HtmlEncode(dt.Rows[0]["OP_FD_C"].ToString().Trim());
+            OBTreasuryBillDR.Text = Server.HtmlEncode(dt.Rows[0]["OP_TB_D"].ToString().Trim());
+            OBTreasuryBillCR.Text = Server.HtmlEncode(dt.Rows[0]["OP_TB_C"].ToString().Trim());
+            OBSecuritiesDR.Text = Server.HtmlEncode(dt.Rows[0]["OP_SS_D"].ToString().Trim());
+            OBSecuritiesCR.Text = Server.HtmlEncode(dt.Rows[0]["OP_SS_C"].ToString().Trim());
+            OBFCurrencyDR.Text = Server.HtmlEncode(dt.Rows[0]["OP_FCLO_D"].ToString().Trim());
+            OBFCurrencyCR.Text = Server.HtmlEncode(dt.Rows[0]["OP_FCLO_C"].ToString().Trim());
+
             txtOpeningBalanceAmount.Text = dt.Rows[0]["OP_TOT_D"].ToString().Trim();
             txtOBDisabled.Text = dt.Rows[0]["OP_TOT_C"].ToString().Trim();
-            CBCashBalanceDR.Text = dt.Rows[0]["CL_CASH_D"].ToString().Trim();
-            CBCashBalanceCR.Text = dt.Rows[0]["CL_CASH_C"].ToString().Trim();
-            CBSuspAccountDR.Text = dt.Rows[0]["CL_SUSP_D"].ToString().Trim();
-            CBSuspAccountCR.Text = dt.Rows[0]["CL_SUSP_C"].ToString().Trim();
-            CBDepositOtherDR.Text = dt.Rows[0]["CL_DEP_OTH_D"].ToString().Trim();
-            CBDepositOtherCR.Text = dt.Rows[0]["CL_DEP_OTH_C"].ToString().Trim();
-            CBDepositRBIDR.Text = dt.Rows[0]["CL_DEP_RBI_D"].ToString().Trim();
-            CBDepositRBICR.Text = dt.Rows[0]["CL_DEP_RBI_C"].ToString().Trim();
-            CBFixedDepositDR.Text = dt.Rows[0]["CL_FD_D"].ToString().Trim();
-            CBFixedDepositCR.Text = dt.Rows[0]["CL_FD_C"].ToString().Trim();
-            CBTreasuryBillsDR.Text = dt.Rows[0]["CL_TB_D"].ToString().Trim();
-            CBTreasuryBillsCR.Text = dt.Rows[0]["CL_TB_C"].ToString().Trim();
-            CBSecuritiesDR.Text = dt.Rows[0]["CL_SS_D"].ToString().Trim();
-            CBSecuritiesCR.Text = dt.Rows[0]["CL_SS_C"].ToString().Trim();
-            CBForeignCurrencyDR.Text = dt.Rows[0]["CL_FCLO_D"].ToString().Trim();
-            CBForeignCurrencyCR.Text = dt.Rows[0]["CL_FCLO_C"].ToString().Trim();
+
+            CBCashBalanceDR.Text = Server.HtmlEncode(dt.Rows[0]["CL_CASH_D"].ToString().Trim());
+            CBCashBalanceCR.Text = Server.HtmlEncode(dt.Rows[0]["CL_CASH_C"].ToString().Trim());
+            CBSuspAccountDR.Text = Server.HtmlEncode(dt.Rows[0]["CL_SUSP_D"].ToString().Trim());
+            CBSuspAccountCR.Text = Server.HtmlEncode(dt.Rows[0]["CL_SUSP_C"].ToString().Trim());
+            CBDepositOtherDR.Text = Server.HtmlEncode(dt.Rows[0]["CL_DEP_OTH_D"].ToString().Trim());
+            CBDepositOtherCR.Text = Server.HtmlEncode(dt.Rows[0]["CL_DEP_OTH_C"].ToString().Trim());
+            CBDepositRBIDR.Text = Server.HtmlEncode(dt.Rows[0]["CL_DEP_RBI_D"].ToString().Trim());
+            CBDepositRBICR.Text = Server.HtmlEncode(dt.Rows[0]["CL_DEP_RBI_C"].ToString().Trim());
+            CBFixedDepositDR.Text = Server.HtmlEncode(dt.Rows[0]["CL_FD_D"].ToString().Trim());
+            CBFixedDepositCR.Text = Server.HtmlEncode(dt.Rows[0]["CL_FD_C"].ToString().Trim());
+            CBTreasuryBillsDR.Text = Server.HtmlEncode(dt.Rows[0]["CL_TB_D"].ToString().Trim());
+            CBTreasuryBillsCR.Text = Server.HtmlEncode(dt.Rows[0]["CL_TB_C"].ToString().Trim());
+            CBSecuritiesDR.Text = Server.HtmlEncode(dt.Rows[0]["CL_SS_D"].ToString().Trim());
+            CBSecuritiesCR.Text = Server.HtmlEncode(dt.Rows[0]["CL_SS_C"].ToString().Trim());
+            CBForeignCurrencyDR.Text = Server.HtmlEncode(dt.Rows[0]["CL_FCLO_D"].ToString().Trim());
+            CBForeignCurrencyCR.Text = Server.HtmlEncode(dt.Rows[0]["CL_FCLO_C"].ToString().Trim());
+
+
             txtClosingBalanceAmount.Text = dt.Rows[0]["CL_TOT_D"].ToString().Trim();
             txtCBDisabled.Text = dt.Rows[0]["CL_TOT_C"].ToString().Trim();
             txtEEFCAccounts.Text = dt.Rows[0]["EEFCAC"].ToString().Trim();
@@ -386,6 +433,7 @@ public partial class RRETURN_RET_AddEditNostroOpCloBalanceDataEntry : System.Web
             txtEscrowFCAccounts.Text = dt.Rows[0]["ESCROWAC"].ToString().Trim();
             txtFCNRBAccounts.Text = dt.Rows[0]["FCNRAC"].ToString().Trim();
             txtOtherFCAccounts.Text = dt.Rows[0]["OTHERAC"].ToString().Trim();
+
         }
         else
         {
@@ -737,7 +785,12 @@ public partial class RRETURN_RET_AddEditNostroOpCloBalanceDataEntry : System.Web
         DataTable dt = objData.getData(_query, p1);
         if (dt.Rows.Count > 0)
         {
-            lblAdcodeDesc.Text = dt.Rows[0]["AuthorizedDealerCode"].ToString().Trim();
+            //lblAdcodeDesc.Text = dt.Rows[0]["AuthorizedDealerCode"].ToString().Trim();
+            string ADDESC = dt.Rows[0]["AuthorizedDealerCode"].ToString().Trim();
+            if (!string.IsNullOrEmpty(ADDESC))
+            {
+                lblAdcodeDesc.Text = Server.HtmlEncode(ADDESC);
+            }
         }
         else
         {
@@ -928,7 +981,12 @@ public partial class RRETURN_RET_AddEditNostroOpCloBalanceDataEntry : System.Web
         DataTable dt = objData.getData(_query);
         if (dt.Rows.Count > 0)
         {
-            lblBankname.Text = dt.Rows[0]["BankName"].ToString();
+            //lblBankname.Text = dt.Rows[0]["BankName"].ToString();
+            string bankname = dt.Rows[0]["BankName"].ToString().Trim();
+            if (!string.IsNullOrEmpty(bankname))
+            {
+                lblAdcodeDesc.Text = Server.HtmlEncode(bankname);
+            }
         }
     }
     public void fillCurrencyDes()

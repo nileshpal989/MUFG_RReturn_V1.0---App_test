@@ -1668,7 +1668,12 @@ public partial class RRETURN_RET_AddEditReturnData : System.Web.UI.Page
 
             if (dt.Rows.Count > 0)
             {
-                lblImpExpCountry.Text = dt.Rows[0][0].ToString().Trim();
+                //lblImpExpCountry.Text = dt.Rows[0][0].ToString().Trim();
+                string ImpExpCountry = dt.Rows[0][0].ToString().Trim();
+                if (!string.IsNullOrEmpty(ImpExpCountry))
+                {
+                    lblImpExpCountry.Text = Server.HtmlEncode(ImpExpCountry);
+                }
 
                 if (txtImpExpCountry.Text == "FC")
                 {
@@ -1722,7 +1727,12 @@ public partial class RRETURN_RET_AddEditReturnData : System.Web.UI.Page
             DataTable dt = objData.getData(_query, p1, p2);
             if (dt.Rows.Count > 0)
             {
-                lblBankCode.Text = dt.Rows[0][1].ToString().Trim();
+                //lblBankCode.Text = dt.Rows[0][1].ToString().Trim();
+                string bankname = dt.Rows[0][1].ToString().Trim();
+                if (!string.IsNullOrEmpty(bankname))
+                {
+                    lblBankname.Text = Server.HtmlEncode(bankname);
+                }
             }
             else
             {
@@ -1775,7 +1785,12 @@ public partial class RRETURN_RET_AddEditReturnData : System.Web.UI.Page
         DataTable dt = objData.getData(_query);
         if (dt.Rows.Count > 0)
         {
-            lblBankname.Text = dt.Rows[0]["BankName"].ToString();
+            //lblBankname.Text = dt.Rows[0]["BankName"].ToString();
+            string bankname = dt.Rows[0]["BankName"].ToString().Trim();
+            if (!string.IsNullOrEmpty(bankname))
+            {
+                lblBankname.Text = Server.HtmlEncode(bankname);
+            }
         }
     }
     protected void BookingOfficeNo()
