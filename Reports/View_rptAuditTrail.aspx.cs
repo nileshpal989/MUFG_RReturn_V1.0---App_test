@@ -17,7 +17,12 @@ public partial class Reports_View_rptAuditTrail : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+            //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+            string header = Request.QueryString["PageHeader"];
+            if (!string.IsNullOrEmpty(header))
+            {
+                PageHeader.Text = Server.HtmlEncode(header);
+            }
             try
             {
                 Encryption objEncryption = new Encryption();

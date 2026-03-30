@@ -27,7 +27,12 @@ public partial class Reports_TF_AuditTrail : System.Web.UI.Page
                 //ddlBranch.Enabled = false;
                 btnSave.Attributes.Add("onclick", "return Generate();");
                 btnUserList.Attributes.Add("onclick", "return OpenUserList();");
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 txtFromDate.Focus();
             }
             txtToDate.Text = System.DateTime.Now.ToString("dd/MM/yyyy");
