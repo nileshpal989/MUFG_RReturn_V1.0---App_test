@@ -26,7 +26,12 @@ public partial class TF_rptAccessControl : System.Web.UI.Page
             {
                 if (!IsPostBack)
                 {
-                    PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                    //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                    string header = Request.QueryString["PageHeader"];
+                    if (!string.IsNullOrEmpty(header))
+                    {
+                        PageHeader.Text = Server.HtmlEncode(header);
+                    }
                     btnBenfList.Attributes.Add("onclick", "return OpenUserList();");
                     btnSave.Attributes.Add("onclick", "return validateSave();");
                 }

@@ -38,7 +38,12 @@ public partial class TF_AdminAuditTrail : System.Web.UI.Page
                     txtFromDate.Text = System.DateTime.Now.ToString("dd/MM/yyyy");
                     txtToDate.Text = System.DateTime.Now.ToString("dd/MM/yyyy");
                     btnSave.Attributes.Add("onclick", "return validateSave();");
-                    PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                    //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                    string header = Request.QueryString["PageHeader"];
+                    if (!string.IsNullOrEmpty(header))
+                    {
+                        PageHeader.Text = Server.HtmlEncode(header);
+                    }
                     //      rdbTypewise.Checked = true;
                     fillBranch();
                     ddlBranch.SelectedValue = Session["userADCode"].ToString();

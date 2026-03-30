@@ -25,7 +25,12 @@ public partial class Reports_RRETURNReports_rpt_RRETURN_DataStatistics : System.
                 txtFromDate.Text = Session["FrRelDt"].ToString();
                 txtToDate.Text = Session["ToRelDt"].ToString();
                 btnSave.Attributes.Add("onclick", "return validateSave();");
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 fillBranch();
                 ddlBranch.SelectedValue = Session["userADCode"].ToString();
                 //ddlBranch.Enabled = false;

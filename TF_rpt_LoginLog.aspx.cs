@@ -32,7 +32,12 @@ public partial class TF_rpt_LoginLog : System.Web.UI.Page
                     ddlBranch.Enabled = false;
                     fillUserList();
 
-                    PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                    //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                    string header = Request.QueryString["PageHeader"];
+                    if (!string.IsNullOrEmpty(header))
+                    {
+                        PageHeader.Text = Server.HtmlEncode(header);
+                    }
                     btnUserList.Attributes.Add("onclick", "return OpenUserList1();");
                     //txtUserName.Attributes.Add("onblur", "return checkUser();");
                     rdbAllCustomer.Attributes.Add("onclick", "return toogleDisplay();");

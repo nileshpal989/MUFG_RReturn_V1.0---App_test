@@ -20,7 +20,12 @@ public partial class Reports_RRETURNReports_View_rpt_RRETURN_DataStatistics : Sy
         {
             if (!IsPostBack)
             {
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 if (Request.QueryString["frm"] != null && Request.QueryString["to"] != null)
                 {
                     Encryption objEncryption = new Encryption(); 

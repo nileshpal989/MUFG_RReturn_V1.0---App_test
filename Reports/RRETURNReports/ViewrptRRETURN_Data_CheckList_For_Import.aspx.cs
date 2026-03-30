@@ -19,7 +19,12 @@ public partial class Reports_RRETURNReports_ViewrptRRETURN_Data_CheckList_For_Im
         {
             if (Request.QueryString["frm"] != null && Request.QueryString["to"] != null)
             {
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 try
                 {
                     Encryption objEncryption = new Encryption();

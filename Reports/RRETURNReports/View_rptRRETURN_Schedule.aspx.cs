@@ -20,7 +20,12 @@ public partial class Reports_RRETURNReports_View_rptRRETURN_Schedule : System.We
     {
         if (!IsPostBack)
         {
-            PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+            //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+            string header = Request.QueryString["PageHeader"];
+            if (!string.IsNullOrEmpty(header))
+            {
+                PageHeader.Text = Server.HtmlEncode(header);
+            }
             try
             {                
                 if (Request.QueryString["frm"] != null && Request.QueryString["to"] != null)

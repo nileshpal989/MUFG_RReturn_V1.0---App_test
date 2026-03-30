@@ -19,7 +19,12 @@ public partial class TF_ViewrptAccessControl : System.Web.UI.Page
         {
             if (!IsPostBack)
             {
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 Encryption objEncryption = new Encryption();
                 Microsoft.Reporting.WebForms.ReportParameter User_Name = new Microsoft.Reporting.WebForms.ReportParameter();
                 User_Name.Name = "User_Name";

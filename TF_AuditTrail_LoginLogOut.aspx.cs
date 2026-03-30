@@ -39,7 +39,12 @@ public partial class TF_AuditTrail_LoginLogOut : System.Web.UI.Page
                     btnSave.Attributes.Add("onclick", "return Generate();");
                     btnUserList.Attributes.Add("onclick", "return OpenUserList();");
                     //txtUserName.Attributes.Add("onblur", "return checkUser();");
-                    PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                    //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                    string header = Request.QueryString["PageHeader"];
+                    if (!string.IsNullOrEmpty(header))
+                    {
+                        PageHeader.Text = Server.HtmlEncode(header);
+                    }
                     //hdnModule.Value = Request.QueryString["ModuleType"].ToString();
 
                     //rdbAllCustomer.Attributes.Add("onclick", "return toogleDisplay();");

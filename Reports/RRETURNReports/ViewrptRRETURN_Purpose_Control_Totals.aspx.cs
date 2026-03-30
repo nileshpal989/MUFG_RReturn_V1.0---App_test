@@ -19,7 +19,12 @@ public partial class Reports_RRETURNReports_ViewrptRRETURN_Purpose_Control_Total
         {
             if (Request.QueryString["frm"] != null && Request.QueryString["to"] != null)
             {
-                PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+                string header = Request.QueryString["PageHeader"];
+                if (!string.IsNullOrEmpty(header))
+                {
+                    PageHeader.Text = Server.HtmlEncode(header);
+                }
                 try
                 {
                     Encryption objEncryption = new Encryption();

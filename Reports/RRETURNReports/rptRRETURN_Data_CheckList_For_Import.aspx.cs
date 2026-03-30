@@ -22,7 +22,12 @@ public partial class Reports_RRETURNReports_rptRRETURN_Data_CheckList_For_Import
             fillBranch();
             ddlBranch.SelectedValue = Session["userADCode"].ToString();
             //ddlBranch.Enabled = false;
-            PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+            //PageHeader.Text = Request.QueryString["PageHeader"].ToString();
+            string header = Request.QueryString["PageHeader"];
+            if (!string.IsNullOrEmpty(header))
+            {
+                PageHeader.Text = Server.HtmlEncode(header);
+            }
             txtFromDate.Text = Session["FrRelDt"].ToString();
             txtToDate.Text = Session["ToRelDt"].ToString();
             btnSave.Attributes.Add("onclick", "return validateSave();");
