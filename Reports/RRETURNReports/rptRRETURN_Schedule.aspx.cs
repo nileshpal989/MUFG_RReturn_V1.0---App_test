@@ -118,7 +118,12 @@ public partial class Reports_RRETURNReports_rptRRETURN_Schedule : System.Web.UI.
             DataTable dt = objData.getData(_query, p1);
             if (dt.Rows.Count > 0)
             {
-                lblAuthSignName.Text = dt.Rows[0]["Authorised_Signatory"].ToString().Trim();
+                //lblAuthSignName.Text = dt.Rows[0]["Authorised_Signatory"].ToString().Trim();
+                string Authsignname = dt.Rows[0]["Authorised_Signatory"].ToString().Trim();
+                if (!string.IsNullOrEmpty(Authsignname))
+                {
+                    lblAuthSignName.Text = Server.HtmlEncode(Authsignname);
+                }
             }
             else
             {
@@ -201,7 +206,12 @@ public partial class Reports_RRETURNReports_rptRRETURN_Schedule : System.Web.UI.
             if (dt.Rows.Count > 0)
             {
                 txtCurrency.Text = dt.Rows[0]["C_Code"].ToString();
-                lblCurDesc.Text = dt.Rows[0]["C_DESCRIPTION"].ToString();
+                //lblCurDesc.Text = dt.Rows[0]["C_DESCRIPTION"].ToString();
+                string CountryDesc = dt.Rows[0]["C_DESCRIPTION"].ToString();
+                if (!string.IsNullOrEmpty(CountryDesc))
+                {
+                    lblCurDesc.Text = Server.HtmlEncode(CountryDesc);
+                }
             }
             else
             {

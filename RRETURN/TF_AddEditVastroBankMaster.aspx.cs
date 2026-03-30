@@ -93,7 +93,12 @@ public partial class TF_AddEditVastroBankMaster : System.Web.UI.Page
         DataTable dt = objData.getData(_query, p1);
         if (dt.Rows.Count > 0)
         {
-            lblCountryDesc.Text = dt.Rows[0]["CountryName"].ToString().Trim();
+            //lblCountryDesc.Text = dt.Rows[0]["CountryName"].ToString().Trim();
+            string CountryDesc = dt.Rows[0]["CountryName"].ToString().Trim();
+            if (!string.IsNullOrEmpty(CountryDesc))
+            {
+                lblCountryDesc.Text = Server.HtmlEncode(CountryDesc);
+            }
         }
         else
         {

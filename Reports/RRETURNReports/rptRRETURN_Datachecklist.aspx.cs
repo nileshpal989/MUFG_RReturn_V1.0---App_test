@@ -116,7 +116,12 @@ public partial class Reports_RRETURNReports_rptRRETURN_Datachecklist : System.We
         DataTable dt = objData.getData(_query, p1);
         if (dt.Rows.Count > 0)
         {            
-            lblPurposeCode.Text = dt.Rows[0]["description"].ToString().Trim();
+            //lblPurposeCode.Text = dt.Rows[0]["description"].ToString().Trim();
+            string PurposeCode = dt.Rows[0]["description"].ToString().Trim();
+            if (!string.IsNullOrEmpty(PurposeCode))
+            {
+                lblPurposeCode.Text = Server.HtmlEncode(PurposeCode);
+            }
             btnSave.Focus();
         }
         else

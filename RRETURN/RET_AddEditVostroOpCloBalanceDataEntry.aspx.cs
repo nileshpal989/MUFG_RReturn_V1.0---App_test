@@ -78,7 +78,12 @@ public partial class RRETURN_RET_AddEditVostroOpCloBalanceDataEntry : System.Web
         if (dt.Rows.Count > 0)
         {
             txtBankCode.Text = dt.Rows[0]["BANKCODE"].ToString();
-            lblBankCode.Text = dt.Rows[0]["BANKNAME"].ToString();
+            //lblBankCode.Text = dt.Rows[0]["BankName"].ToString();
+            string bankname = dt.Rows[0]["BankName"].ToString().Trim();
+            if (!string.IsNullOrEmpty(bankname))
+            {
+                lblBankCode.Text = Server.HtmlEncode(bankname);
+            }
         }
         else
         {
@@ -338,7 +343,12 @@ public partial class RRETURN_RET_AddEditVostroOpCloBalanceDataEntry : System.Web
         DataTable dt = objData.getData(_query, p1);
         if (dt.Rows.Count > 0)
         {
-            lblAdcodeDesc.Text = dt.Rows[0]["AuthorizedDealerCode"].ToString().Trim();
+            //lblAdcodeDesc.Text = dt.Rows[0]["AuthorizedDealerCode"].ToString().Trim();
+            string ADDESC = dt.Rows[0]["AuthorizedDealerCode"].ToString().Trim();
+            if (!string.IsNullOrEmpty(ADDESC))
+            {
+                lblAdcodeDesc.Text = Server.HtmlEncode(ADDESC);
+            }
         }
         else
         {
@@ -474,7 +484,12 @@ public partial class RRETURN_RET_AddEditVostroOpCloBalanceDataEntry : System.Web
             DataTable dt = objData.getData(_query, p1, p2);
             if (dt.Rows.Count > 0)
             {
-                lblBankCode.Text = dt.Rows[0]["BankName"].ToString();
+                //lblBankCode.Text = dt.Rows[0]["BankName"].ToString();
+                string bankname = dt.Rows[0]["BankName"].ToString().Trim();
+                if (!string.IsNullOrEmpty(bankname))
+                {
+                    lblBankCode.Text = Server.HtmlEncode(bankname);
+                }
                 fillDetails();
                 txtOP_D.Focus();
             }

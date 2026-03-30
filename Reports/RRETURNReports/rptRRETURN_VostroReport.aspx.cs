@@ -66,7 +66,12 @@ public partial class Reports_RRETURNReports_rptRRETURN_VostroReport : System.Web
             DataTable dt = objData.getData(_query, p1);
             if (dt.Rows.Count > 0)
             {
-                lblAuthSignName.Text = dt.Rows[0]["Authorised_Signatory"].ToString().Trim();
+                //lblAuthSignName.Text = dt.Rows[0]["Authorised_Signatory"].ToString().Trim();
+                string AuthSignName = dt.Rows[0]["Authorised_Signatory"].ToString().Trim();
+                if (!string.IsNullOrEmpty(AuthSignName))
+                {
+                    lblAuthSignName.Text = Server.HtmlEncode(AuthSignName);
+                }
                 ddlCurrency.Focus();
             }
             else

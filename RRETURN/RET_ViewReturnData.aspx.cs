@@ -67,7 +67,13 @@ public partial class RRETURN_RET_ViewReturnData : System.Web.UI.Page
             ddlBranch.DataSource = dt.DefaultView;
             ddlBranch.DataTextField = "BranchName";
             ddlBranch.DataValueField = "AuthorizedDealerCode";
-            lblAdcodeDesc.Text = dt.Rows[0]["AuthorizedDealerCode"].ToString();
+            //lblAdcodeDesc.Text = dt.Rows[0]["AuthorizedDealerCode"].ToString();
+            string ADDESC = dt.Rows[0]["AuthorizedDealerCode"].ToString();
+            if (!string.IsNullOrEmpty(ADDESC))
+            {
+                lblAdcodeDesc.Text = Server.HtmlEncode(ADDESC);
+            }
+
             ddlBranch.DataBind();
         }
     }
@@ -78,7 +84,12 @@ public partial class RRETURN_RET_ViewReturnData : System.Web.UI.Page
         DataTable dt = objData.getData(_query);
         if (dt.Rows.Count > 0)
         {
-           lblBankname.Text = dt.Rows[0]["BankName"].ToString();  
+           //lblBankname.Text = dt.Rows[0]["BankName"].ToString();
+           string bankname = dt.Rows[0]["BankName"].ToString().Trim();
+           if (!string.IsNullOrEmpty(bankname))
+           {
+               lblBankname.Text = Server.HtmlEncode(bankname);
+           }
         }
     }
     protected void ddlrecordperpage_SelectedIndexChanged(object sender, EventArgs e)

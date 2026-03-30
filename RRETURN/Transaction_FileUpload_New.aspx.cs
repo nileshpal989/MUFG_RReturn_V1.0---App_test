@@ -617,13 +617,15 @@ public partial class RRETURN_Transaction_FileUpload_New : System.Web.UI.Page
             if (dt.Rows.Count > 0)
             {
                 lblHint.Text = "<font color='red'>" + "Please Correct All Errors Then You Can Process Data.." + "</font>";
-                label2.Text = "<font color='red'>" + dt.Rows.Count + "</font>" + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error Records ";
+                //label2.Text = "<font color='red'>" + dt.Rows.Count + "</font>" + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error Records ";
+                label2.Text = "<font color='red'>" + Server.HtmlEncode(dt.Rows.Count.ToString()) + "</font>     Error Records";
                 script = "window.open('RET_CSV_Validation.aspx?PageHeader=CSV Validate&Branch=" + ddlBranch.SelectedValue.ToString() + "','_blank','height=600,  width=1000,status= no, resizable= no, scrollbars=yes, toolbar=no,location=center,menubar=no, top=20, left=100')";
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "popup", script, true);
             }
             else
             {
-                label2.Text = "<font color='red'>" + dt.Rows.Count + "</font>" + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error Records ";
+                //label2.Text = "<font color='red'>" + dt.Rows.Count + "</font>" + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error Records ";
+                label2.Text = "<font color='red'>" + Server.HtmlEncode(dt.Rows.Count.ToString()) + "</font>     Error Records";
                 lblHint.Text = "";
             }
         }
