@@ -168,7 +168,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             Response.Redirect("ErrorPage.aspx");
         }
     }
-   public string RES_CSV_GENERATE()
+    public string RES_CSV_GENERATE()
     {
         string ErrorMessage = "";
         try
@@ -274,7 +274,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
                 new_Link1.Text = "Download File";
                 downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
                 //new_Link1.NavigateUrl = downloadpath;
-                new_Link1.NavigateUrl = ResolveUrl(downloadpath);
+                new_Link1.NavigateUrl = downloadpath;
                 
                 new_Link1.CssClass = "buttonDefault";
 
