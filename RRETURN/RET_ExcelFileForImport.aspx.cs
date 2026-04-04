@@ -62,11 +62,21 @@ public partial class RRETURN_RET_ExcelFileForImport : System.Web.UI.Page
             if (txtFromDate.Text == "")
             {
                 return;
-            }          
+            }
 
-            string _fromdate = txtFromDate.Text.Substring(6, 4) + "" + txtFromDate.Text.Substring(3, 2) + "" + txtFromDate.Text.Substring(0, 2);
-            string _todate = txtToDate.Text.Substring(6, 4) + "" + txtToDate.Text.Substring(3, 2) + "" + txtToDate.Text.Substring(0, 2);
-            //string _todate = txtToDate.Text.Substring(0, 2) + "" + txtToDate.Text.Substring(3, 2) + "" + txtToDate.Text.Substring(6, 4);
+            
+
+            //string _fromdate = txtFromDate.Text.Substring(6, 4) + "" + txtFromDate.Text.Substring(3, 2) + "" + txtFromDate.Text.Substring(0, 2);
+            //string _todate = txtToDate.Text.Substring(6, 4) + "" + txtToDate.Text.Substring(3, 2) + "" + txtToDate.Text.Substring(0, 2);
+            string fromdate = txtFromDate.Text;
+            string todate = txtToDate.Text;
+            fromdate = System.Text.RegularExpressions.Regex.Replace(fromdate, @"[^0-9/]", "");
+            DateTime parsedDate = DateTime.ParseExact(fromdate, "dd/MM/yyyy", null);
+            string _fromdate = parsedDate.ToString("yyyyMMdd");
+            todate = System.Text.RegularExpressions.Regex.Replace(todate, @"[^0-9/]", "");
+            DateTime ToparsedDate = DateTime.ParseExact(todate, "dd/MM/yyyy", null);
+            string _todate = ToparsedDate.ToString("yyyyMMdd");
+
             TF_DATA objData1 = new TF_DATA();
             SqlParameter p1 = new SqlParameter("@AdCode", SqlDbType.VarChar);
             p1.Value = ddlBranch.SelectedItem.Value;
@@ -85,7 +95,8 @@ public partial class RRETURN_RET_ExcelFileForImport : System.Web.UI.Page
                     Directory.CreateDirectory(_directoryPath);
                 }
                 string _filePath = _directoryPath + "/Invoice_Upload_From_" + _fromdate +"_To_"+_todate+ ".xlsx";
-                _filePath = System.Text.RegularExpressions.Regex.Replace(_filePath, @"[^a-zA-Z0-9]", "");
+
+
                 if (dt.Rows.Count > 0)
                 {
                     using (XLWorkbook wb = new XLWorkbook())

@@ -64,7 +64,8 @@ public partial class RRETURN_RET_RBITextFileAtHeadOffice : System.Web.UI.Page
             DateTime documentDate = Convert.ToDateTime(txtFromDate.Text.Trim(), dateInfo);
             DateTime documentDate1 = Convert.ToDateTime(txtToDate.Text.Trim(), dateInfo);
             string todate = txtToDate.Text.Trim();
-            string formattedDate = Convert.ToDateTime(todate).ToString("ddMMyyyy");
+            DateTime parsedDate = DateTime.ParseExact(todate, "dd/MM/yyyy", null);
+            string formattedDate = parsedDate.ToString("ddMMyyyy");
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
             SqlParameter BranchName = new SqlParameter("@Branch", SqlDbType.VarChar);
             BranchName.Value = ddlBranch.SelectedItem.ToString().Trim();
