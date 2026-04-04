@@ -231,9 +231,10 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
             // ✅ SAFE
             string _filePath = Path.Combine(_directoryPath, _strAdCode + ".CSV");
-
+            string finalPath = Path.GetFullPath(_filePath);
             StreamWriter sw;
-            sw = File.CreateText(_filePath);
+            //sw = File.CreateText(_filePath);
+            sw = File.CreateText(finalPath);
 
             string _strHeader = "ADCODE,BRANCHNAME,SRNO,FR_FORTNIGHT_DT,TO_FORTNIGHT_DT,TRANSACTION_DT,DOCNO,IECODE,FORMSRNO,PURPOSE_ID,PORT_CODE,"
                 + "SHIPPING_BILL_NO,SHIPPING_BILL_DT,CURR,AMOUNT,INR_AMOUNT,AC_COUNTRY_CODE,BN_COUNTRY_CODE,CUSTOMSRNO,LCINDICATION,BENEFICIARYNAME,"
