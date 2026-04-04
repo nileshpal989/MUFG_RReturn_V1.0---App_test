@@ -183,16 +183,12 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
 
-            Branchname = System.Text.RegularExpressions.Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");
-
-
+            Branchname = System.Text.RegularExpressions.Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");            
             todate = System.Text.RegularExpressions.Regex.Replace(todate, @"[^0-9/]", ""); // allow only date chars
             DateTime parsedDate = DateTime.ParseExact(todate, "dd/MM/yyyy", null);
             string datePart = parsedDate.ToString("ddMMyyyy");
-            //string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
             string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
             string folderName = "BR_" + Branchname + "_ConsoFile";
-
             _directoryPath = Path.Combine(basePath, folderName, datePart);
             _directoryPath = Path.GetFullPath(Path.Combine(basePath, folderName, datePart));
             // 🔐 PATH TRAVERSAL CHECK
@@ -203,11 +199,9 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             {
                 throw new Exception("Invalid path detected.");
             }
-            // ✅ SAFE
             string adCode = ddlBranch.SelectedItem.Value;
             adCode = System.Text.RegularExpressions.Regex.Replace(adCode, @"[^a-zA-Z0-9]", "");
             _strAdCode = "ERS_" + adCode + "_" + datePart;
-            //_strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
@@ -233,9 +227,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
             // 🔴 OLD CODE
             // string _filePath = _directoryPath + "/" + _strAdCode + ".CSV";
-
             // ✅ SAFE
-            //string _filePath = Path.Combine(_directoryPath, _strAdCode + ".CSV");
             string _filePath = Path.GetFullPath(Path.Combine(_directoryPath, _strAdCode + ".CSV"));
             StreamWriter sw;
             sw = File.CreateText(_filePath);
@@ -263,14 +255,12 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
                 // 🔴 OLD CODE
                 //string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4) + "/ERS_" + ddlBranch.SelectedItem.Value + "_" + datePart + ".CSV";
                 string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/ERS_" + adCode + "_" + datePart + ".CSV";
-                //string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/ERS" + adCode + datePart + ".CSV";
                 txters.Text = _strAdCode + ".CSV";
 
                 HyperLink new_Link1 = new HyperLink();
                 new_Link1.Text = "Download File";
                 //new_Link1.NavigateUrl = downloadpath;
                 new_Link1.NavigateUrl = ResolveUrl(downloadpath);
-                //new_Link1.NavigateUrl = Path.GetFullPath(downloadpath);
                 new_Link1.CssClass = "buttonDefault";
 
                 ersfile.Controls.Add(new_Link1);
@@ -357,39 +347,30 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             string todate = txtToDate.Text.Trim();
             string _directoryPath = "";
             string _strAdCode = "";
-
-            // 🔴 OLD
-            // string Branchname = ddlBranch.SelectedItem.ToString().Trim();
-
-            // ✅ SAFE
+            
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
+
             Branchname = System.Text.RegularExpressions.Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");
-
-            string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
-
-            // 🔴 OLD
-            // _directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/"+ datePart);
-
-            // ✅ SAFE
+            todate = System.Text.RegularExpressions.Regex.Replace(todate, @"[^0-9/]", ""); // allow only date chars
+            DateTime parsedDate = DateTime.ParseExact(todate, "dd/MM/yyyy", null);
+            string datePart = parsedDate.ToString("ddMMyyyy");
             string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
             string folderName = "BR_" + Branchname + "_ConsoFile";
-
             _directoryPath = Path.Combine(basePath, folderName, datePart);
+            _directoryPath = Path.GetFullPath(Path.Combine(basePath, folderName, datePart));
+            // 🔐 PATH TRAVERSAL CHECK
+            string fullBasePath = Path.GetFullPath(basePath);
+            string fullTargetPath = Path.GetFullPath(_directoryPath);
 
-            // 🔐 VALIDATION
-            if (!Path.GetFullPath(_directoryPath).StartsWith(Path.GetFullPath(basePath)))
+            if (!fullTargetPath.StartsWith(fullBasePath, StringComparison.OrdinalIgnoreCase))
             {
                 throw new Exception("Invalid path detected.");
             }
 
-            // 🔴 OLD
-            // _strAdCode = "Nostro_" + ddlBranch.SelectedItem.Value + "_" + datePart;
-
-            // ✅ SAFE
             string adCode = ddlBranch.SelectedItem.Value;
             adCode = System.Text.RegularExpressions.Regex.Replace(adCode, @"[^a-zA-Z0-9]", "");
             _strAdCode = "Nostro_" + adCode + "_" + datePart;
-            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
+
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
@@ -413,7 +394,7 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             // 🔴 OLD
             // string _filePath = _directoryPath + "/" + _strAdCode + ".CSV";
 
-            string _filePath = Path.Combine(_directoryPath, _strAdCode + ".CSV");
+            string _filePath = Path.GetFullPath(Path.Combine(_directoryPath, _strAdCode + ".CSV"));
 
             StreamWriter sw = File.CreateText(_filePath);
 
@@ -440,7 +421,6 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
                 HyperLink link = new HyperLink();
                 link.Text = "Download File";
                 //link.NavigateUrl = downloadpath;
-                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
                 link.NavigateUrl = ResolveUrl(downloadpath);
                 link.CssClass = "buttonDefault";
                 nostrofile.Controls.Add(link);
@@ -450,11 +430,9 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
                 string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/Nostro_" + adCode + "_" + datePart + ".CSV";
 
                 txtnostro.Text = _strAdCode + ".CSV";
-
                 HyperLink link = new HyperLink();
                 link.Text = "Download File";
                 //link.NavigateUrl = downloadpath;
-                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
                 link.NavigateUrl = ResolveUrl(downloadpath);
                 link.CssClass = "buttonDefault";
                 nostrofile.Controls.Add(link);
