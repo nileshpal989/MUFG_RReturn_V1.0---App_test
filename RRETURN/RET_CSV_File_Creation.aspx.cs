@@ -66,10 +66,8 @@ public partial class RRETURN_RET_CSV_File_Creation : System.Web.UI.Page
         {
             System.Globalization.DateTimeFormatInfo dateInfo = new System.Globalization.DateTimeFormatInfo();
             dateInfo.ShortDatePattern = "dd/MM/yyyy";
-
             DateTime documentDate = Convert.ToDateTime(txtFromDate.Text.Trim(), dateInfo);
             DateTime documentDate1 = Convert.ToDateTime(txtToDate.Text.Trim(), dateInfo);
-
             string todate = txtToDate.Text.Trim();
             string _directoryPath = "";
             string _strAdCode = "";
@@ -79,27 +77,32 @@ public partial class RRETURN_RET_CSV_File_Creation : System.Web.UI.Page
 
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
             string safeBranch = Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");
-
             string safeAdCode = Regex.Replace(ddlBranch.SelectedItem.Value, @"[^a-zA-Z0-9]", "");
 
-            string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
 
-            // 🔴 OLD
-            // _directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/DataCheck/BR_" + Branchname.Replace(" ", "") + "DataCheck");
-
+            todate = System.Text.RegularExpressions.Regex.Replace(todate, @"[^0-9/]", ""); // allow only date chars
+            DateTime parsedDate = DateTime.ParseExact(todate, "dd/MM/yyyy", null);
+            string datePart = parsedDate.ToString("ddMMyyyy");
             string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/DataCheck/");
             string folderName = "BR_" + safeBranch + "DataCheck";
-
+            // 🔴 OLD
+            // _directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/DataCheck/BR_" + Branchname.Replace(" ", "") + "DataCheck");
             _directoryPath = Path.Combine(basePath, folderName);
+            _directoryPath = Path.GetFullPath(Path.Combine(basePath, folderName));
+            // 🔐 PATH TRAVERSAL CHECK
+            string fullBasePath = Path.GetFullPath(basePath);
+            string fullTargetPath = Path.GetFullPath(_directoryPath);
 
-            if (!Path.GetFullPath(_directoryPath).StartsWith(Path.GetFullPath(basePath)))
+            if (!fullTargetPath.StartsWith(fullBasePath, StringComparison.OrdinalIgnoreCase))
+            {
                 throw new Exception("Invalid path detected.");
+
+            }
 
             // 🔴 OLD
             // _strAdCode = "DataCheck_" + ddlBranch.SelectedItem.Value + "_" + datePart;
 
             _strAdCode = "DataCheck_" + safeAdCode + "_" + datePart;
-            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
@@ -123,7 +126,7 @@ public partial class RRETURN_RET_CSV_File_Creation : System.Web.UI.Page
             // 🔴 OLD
             // string _filePath = _directoryPath + "/" + _strAdCode + ".CSV";
 
-            string _filePath = Path.Combine(_directoryPath, _strAdCode + ".CSV");
+            string _filePath = Path.GetFullPath(Path.Combine(_directoryPath, _strAdCode + ".CSV"));
 
             StreamWriter sw = File.CreateText(_filePath);
 
