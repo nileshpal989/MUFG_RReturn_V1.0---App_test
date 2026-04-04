@@ -184,17 +184,22 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
 
             Branchname = System.Text.RegularExpressions.Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");
-            string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
+
+
+            todate = System.Text.RegularExpressions.Regex.Replace(todate, @"[^0-9/]", ""); // allow only date chars
+            DateTime parsedDate = DateTime.ParseExact(todate, "dd/MM/yyyy", null);
+            string datePart = parsedDate.ToString("ddMMyyyy");
+            //string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
             string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
             string folderName = "BR_" + Branchname + "_ConsoFile";
 
             _directoryPath = Path.Combine(basePath, folderName, datePart);
-
+            _directoryPath = Path.GetFullPath(Path.Combine(basePath, folderName, datePart));
             // 🔐 PATH TRAVERSAL CHECK
             string fullBasePath = Path.GetFullPath(basePath);
             string fullTargetPath = Path.GetFullPath(_directoryPath);
 
-            if (!fullTargetPath.StartsWith(fullBasePath))
+            if (!fullTargetPath.StartsWith(fullBasePath, StringComparison.OrdinalIgnoreCase))
             {
                 throw new Exception("Invalid path detected.");
             }
@@ -230,11 +235,10 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             // string _filePath = _directoryPath + "/" + _strAdCode + ".CSV";
 
             // ✅ SAFE
-            string _filePath = Path.Combine(_directoryPath, _strAdCode + ".CSV");
-            string finalPath = Path.GetFullPath(_filePath);
+            //string _filePath = Path.Combine(_directoryPath, _strAdCode + ".CSV");
+            string _filePath = Path.GetFullPath(Path.Combine(_directoryPath, _strAdCode + ".CSV"));
             StreamWriter sw;
-            //sw = File.CreateText(_filePath);
-            sw = File.CreateText(finalPath);
+            sw = File.CreateText(_filePath);
 
             string _strHeader = "ADCODE,BRANCHNAME,SRNO,FR_FORTNIGHT_DT,TO_FORTNIGHT_DT,TRANSACTION_DT,DOCNO,IECODE,FORMSRNO,PURPOSE_ID,PORT_CODE,"
                 + "SHIPPING_BILL_NO,SHIPPING_BILL_DT,CURR,AMOUNT,INR_AMOUNT,AC_COUNTRY_CODE,BN_COUNTRY_CODE,CUSTOMSRNO,LCINDICATION,BENEFICIARYNAME,"
