@@ -175,14 +175,29 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
                 safeAdCode = System.Text.RegularExpressions.Regex.Replace(safeAdCode, @"[^a-zA-Z0-9]", "");
                 string folderPath = Path.Combine(basePath, "BR_" + safeBranch + "_ConsoFile", filedate);
 
-                if (!Path.GetFullPath(folderPath).StartsWith(Path.GetFullPath(basePath)))
+                string fullBasePath = Path.GetFullPath(basePath);
+                string fullFolderPath = Path.GetFullPath(folderPath);
+
+                if (!fullFolderPath.StartsWith(fullBasePath, StringComparison.OrdinalIgnoreCase))
                     throw new Exception("Invalid path detected.");
-                string ERS_Path = Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV");
-                string NOSTRO_Path = Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV");
-                string VOSTRO_Path = Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV");
-                ERS_Path = Path.GetFullPath(Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV"));
-                NOSTRO_Path = Path.GetFullPath(Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV"));
-                VOSTRO_Path = Path.GetFullPath(Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV"));
+
+
+                
+                //string ERS_Path =                  Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV");
+                //string NOSTRO_Path = Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV");
+                //string VOSTRO_Path = Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV");
+                string ERS_Path = Path.GetFullPath(Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV"));
+                string NOSTRO_Path = Path.GetFullPath(Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV"));
+                string VOSTRO_Path = Path.GetFullPath(Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV"));
+                // ✅ FINAL CHECK (IMPORTANT)
+                if (!ERS_Path.StartsWith(fullBasePath, StringComparison.OrdinalIgnoreCase) ||
+                    !NOSTRO_Path.StartsWith(fullBasePath, StringComparison.OrdinalIgnoreCase) ||
+                    !VOSTRO_Path.StartsWith(fullBasePath, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new Exception("Invalid file path detected.");
+                }
+                
+               
                 if (File.Exists(ERS_Path) && File.Exists(NOSTRO_Path) && File.Exists(VOSTRO_Path))
                 {
                     ErrorMessage.Append(safeBranch + " File Received.");
