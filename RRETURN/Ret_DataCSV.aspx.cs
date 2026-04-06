@@ -398,22 +398,132 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
 
             StreamWriter sw = File.CreateText(_filePath);
 
-            string _strHeader = "ADCODE,BRANCHNAME,...,OTHERAC";
+            string _strHeader = "ADCODE,BRANCHNAME,FR_FORTNIGHT_DT,TO_FORTNIGHT_DT,NV,CURR,OP_CASH_D,OP_CASH_C,OP_SUSP_D,OP_SUSP_C,OP_DEP_OTH_D,OP_DEP_OTH_C,OP_DEP_RBI_D,OP_DEP_RBI_C,OP_FD_D,OP_FD_C,"
+                                + "OP_TB_D,OP_TB_C,OP_SS_D,OP_SS_C,OP_FCLO_D,OP_FCLO_C,OP_OTH_D,OP_OTH_C,OP_TOT_D,OP_TOT_C,CL_CASH_D,CL_CASH_C,CL_SUSP_D,CL_SUSP_C,CL_DEP_OTH_D,CL_DEP_OTH_C,CL_DEP_RBI_D,"
+                                + "CL_DEP_RBI_C,CL_FD_D,CL_FD_C,CL_TB_D,CL_TB_C,CL_SS_D,CL_SS_C,CL_FCLO_D,CL_FCLO_C,CL_OTH_D,CL_OTH_C,CL_TOT_D,CL_TOT_C,EEFCAC,EFCAC,RFCAC,ESCROWAC,FCNRAC,OTHERAC";
             sw.WriteLine(_strHeader);
 
             if (dt.Rows.Count > 0)
             {
+                //for (int j = 0; j < dt.Rows.Count; j++)
+                //{
+                //    for (int i = 0; i < dt.Columns.Count; i++)
+                //    {
+                //        sw.Write(dt.Rows[j][i].ToString().Trim());
+                //        if (i != dt.Columns.Count - 1)
+                //            sw.Write(",");
+                //    }
+                //    sw.WriteLine();
+                //}
                 for (int j = 0; j < dt.Rows.Count; j++)
                 {
-                    for (int i = 0; i < dt.Columns.Count; i++)
-                    {
-                        sw.Write(dt.Rows[j][i].ToString().Trim());
-                        if (i != dt.Columns.Count - 1)
-                            sw.Write(",");
-                    }
-                    sw.WriteLine();
+                    string _strADCODE = dt.Rows[j]["ADCODE"].ToString().Trim();
+                    sw.Write(_strADCODE + ",");
+                    string _strBRANCHNAME = Branchname;
+                    sw.Write(_strBRANCHNAME + ",");
+                    //string _strBRANCHNAME = dt.Rows[j]["BRANCHNAME"].ToString().Trim();
+                    //sw.Write(_strBRANCHNAME + ",");                    
+                    string _strFR_FORTNIGHT_DT = dt.Rows[j]["FR_FORTNIGHT_DT"].ToString().Trim();
+                    sw.Write(_strFR_FORTNIGHT_DT + ",");
+                    string _strTO_FORTNIGHT_DT = dt.Rows[j]["TO_FORTNIGHT_DT"].ToString().Trim();
+                    sw.Write(_strTO_FORTNIGHT_DT + ",");
+                    string _strNV = dt.Rows[j]["NV"].ToString();
+                    sw.Write(_strNV + ",");
+                    string _strCURR = dt.Rows[j]["CURR"].ToString();
+                    sw.Write(_strCURR + ",");
+                    string _strOP_CASH_D = dt.Rows[j]["OP_CASH_D"].ToString();
+                    sw.Write(_strOP_CASH_D + ",");
+                    string _strOP_CASH_C = dt.Rows[j]["OP_CASH_C"].ToString();
+                    sw.Write(_strOP_CASH_C + ",");
+                    string _strOP_SUSP_D = dt.Rows[j]["OP_SUSP_D"].ToString().Trim();
+                    sw.Write(_strOP_SUSP_D + ",");
+                    string _strOP_SUSP_C = dt.Rows[j]["OP_SUSP_C"].ToString().Trim();
+                    sw.Write(_strOP_SUSP_C + ",");
+                    string _strOP_DEP_OTH_D = dt.Rows[j]["OP_DEP_OTH_D"].ToString();
+                    sw.Write(_strOP_DEP_OTH_D + ",");
+                    string _strOP_DEP_OTH_C = dt.Rows[j]["OP_DEP_OTH_C"].ToString();
+                    sw.Write(_strOP_DEP_OTH_C + ",");
+                    string _strOP_DEP_RBI_D = dt.Rows[j]["OP_DEP_RBI_D"].ToString();
+                    sw.Write(_strOP_DEP_RBI_D + ",");
+                    string _strOP_DEP_RBI_C = dt.Rows[j]["OP_DEP_RBI_C"].ToString();
+                    sw.Write(_strOP_DEP_RBI_C + ",");
+                    string _strOP_FD_D = dt.Rows[j]["OP_FD_D"].ToString();
+                    sw.Write(_strOP_FD_D + ",");
+                    string _strOP_FD_C = dt.Rows[j]["OP_FD_C"].ToString();
+                    sw.Write(_strOP_FD_C + ",");
+                    string _strOP_TB_D = dt.Rows[j]["OP_TB_D"].ToString();
+                    sw.Write(_strOP_TB_D + ",");
+                    string _strOP_TB_C = dt.Rows[j]["OP_TB_C"].ToString().Trim();
+                    sw.Write(_strOP_TB_C + ",");
+                    string _strOP_SS_D = dt.Rows[j]["OP_SS_D"].ToString().Trim();
+                    sw.Write(_strOP_SS_D + ",");
+                    string _strOP_SS_C = dt.Rows[j]["OP_SS_C"].ToString();
+                    sw.Write(_strOP_SS_C + ",");
+                    string _strOP_FCLO_D = dt.Rows[j]["OP_FCLO_D"].ToString();
+                    sw.Write(_strOP_FCLO_D + ",");
+                    string _strOP_FCLO_C = dt.Rows[j]["OP_FCLO_C"].ToString();
+                    sw.Write(_strOP_FCLO_C + ",");
+                    string _strOP_OTH_D = dt.Rows[j]["OP_OTH_D"].ToString().Trim();
+                    sw.Write(_strOP_OTH_D + ",");
+                    string _strOP_OTH_C = dt.Rows[j]["OP_OTH_C"].ToString();
+                    sw.Write(_strOP_OTH_C + ",");
+                    string _strOP_TOT_D = dt.Rows[j]["OP_TOT_D"].ToString();
+                    sw.Write(_strOP_TOT_D + ",");
+                    string _strOP_TOT_C = dt.Rows[j]["OP_TOT_C"].ToString();
+                    sw.Write(_strOP_TOT_C + ",");
+                    string _strCL_CASH_D = dt.Rows[j]["CL_CASH_D"].ToString();
+                    sw.Write(_strCL_CASH_D + ",");
+                    string _strCL_CASH_C = dt.Rows[j]["CL_CASH_C"].ToString();
+                    sw.Write(_strCL_CASH_C + ",");
+                    string _strCL_SUSP_D = dt.Rows[j]["CL_SUSP_D"].ToString();
+                    sw.Write(_strCL_SUSP_D + ",");
+                    string _strCL_SUSP_C = dt.Rows[j]["CL_SUSP_C"].ToString();
+                    sw.Write(_strCL_SUSP_C + ",");
+                    string _strCL_DEP_OTH_D = dt.Rows[j]["CL_DEP_OTH_D"].ToString();
+                    sw.Write(_strCL_DEP_OTH_D + ",");
+                    string _strCL_DEP_OTH_C = dt.Rows[j]["CL_DEP_OTH_C"].ToString();
+                    sw.Write(_strCL_DEP_OTH_C + ",");
+                    string _strCL_DEP_RBI_D = dt.Rows[j]["CL_DEP_RBI_D"].ToString().Trim();
+                    sw.Write(_strCL_DEP_RBI_D + ",");
+                    string _strCL_DEP_RBI_C = dt.Rows[j]["CL_DEP_RBI_C"].ToString().Trim();
+                    sw.Write(_strCL_DEP_RBI_C + ",");
+                    string _strCL_FD_D = dt.Rows[j]["CL_FD_D"].ToString();
+                    sw.Write(_strCL_FD_D + ",");
+                    string _strCL_FD_C = dt.Rows[j]["CL_FD_C"].ToString();
+                    sw.Write(_strCL_FD_C + ",");
+                    string _strCL_TB_D = dt.Rows[j]["CL_TB_D"].ToString();
+                    sw.Write(_strCL_TB_D + ",");
+                    string _strCL_TB_C = dt.Rows[j]["CL_TB_C"].ToString().Trim();
+                    sw.Write(_strCL_TB_C + ",");
+                    string _strCL_SS_D = dt.Rows[j]["CL_SS_D"].ToString();
+                    sw.Write(_strCL_SS_D + ",");
+                    string _strCL_SS_C = dt.Rows[j]["CL_SS_C"].ToString();
+                    sw.Write(_strCL_SS_C + ",");
+                    string _strCL_FCLO_D = dt.Rows[j]["CL_FCLO_D"].ToString();
+                    sw.Write(_strCL_FCLO_D + ",");
+                    string _strCL_FCLO_C = dt.Rows[j]["CL_FCLO_C"].ToString();
+                    sw.Write(_strCL_FCLO_C + ",");
+                    string _strCL_OTH_D = dt.Rows[j]["CL_OTH_D"].ToString();
+                    sw.Write(_strCL_OTH_D + ",");
+                    string _strCL_OTH_C = dt.Rows[j]["CL_OTH_C"].ToString();
+                    sw.Write(_strCL_OTH_C + ",");
+                    string _strCL_TOT_D = dt.Rows[j]["CL_TOT_D"].ToString();
+                    sw.Write(_strCL_TOT_D + ",");
+                    string _strCL_TOT_C = dt.Rows[j]["CL_TOT_C"].ToString();
+                    sw.Write(_strCL_TOT_C + ",");
+                    string _strEEFCAC = dt.Rows[j]["EEFCAC"].ToString();
+                    sw.Write(_strEEFCAC + ",");
+                    string _strEFCAC = dt.Rows[j]["EFCAC"].ToString().Trim();
+                    sw.Write(_strEFCAC + ",");
+                    string _strRFCAC = dt.Rows[j]["RFCAC"].ToString().Trim();
+                    sw.Write(_strRFCAC + ",");
+                    string _strESCROWAC = dt.Rows[j]["ESCROWAC"].ToString();
+                    sw.Write(_strESCROWAC + ",");
+                    string _strFCNRAC = dt.Rows[j]["FCNRAC"].ToString();
+                    sw.Write(_strFCNRAC + ",");
+                    string _strOTHERAC = dt.Rows[j]["OTHERAC"].ToString();
+                    sw.WriteLine(_strOTHERAC + ",");
                 }
-
                 string downloadpath = "~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname + "_ConsoFile/" + datePart + "/Nostro_" + adCode + "_" + datePart + ".CSV";
 
                 txtnostro.Text = _strAdCode + ".CSV";
@@ -464,35 +574,32 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             string _directoryPath = "";
             string _strAdCode = "";
 
-            // 🔴 OLD
-            // string Branchname = ddlBranch.SelectedItem.ToString().Trim();
-
-            // ✅ SAFE
             string Branchname = ddlBranch.SelectedItem.ToString().Trim();
+
             Branchname = System.Text.RegularExpressions.Regex.Replace(Branchname, @"[^a-zA-Z0-9]", "");
-
-            string datePart = todate.Substring(0, 2) + todate.Substring(3, 2) + todate.Substring(6, 4);
-
-            // 🔴 OLD
-            // _directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + datePart);
-
+            todate = System.Text.RegularExpressions.Regex.Replace(todate, @"[^0-9/]", ""); // allow only date chars
+            DateTime parsedDate = DateTime.ParseExact(todate, "dd/MM/yyyy", null);
+            string datePart = parsedDate.ToString("ddMMyyyy");
             string basePath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/");
             string folderName = "BR_" + Branchname + "_ConsoFile";
-
+            // 🔴 OLD
+            // _directoryPath = Server.MapPath("~/TF_GeneratedFiles/RRETURN/Conso/BR_" + Branchname.Replace(" ", "") + "_ConsoFile/" + datePart);
             _directoryPath = Path.Combine(basePath, folderName, datePart);
+            _directoryPath = Path.GetFullPath(Path.Combine(basePath, folderName, datePart));
+            // 🔐 PATH TRAVERSAL CHECK
+            string fullBasePath = Path.GetFullPath(basePath);
+            string fullTargetPath = Path.GetFullPath(_directoryPath);
 
-            if (!Path.GetFullPath(_directoryPath).StartsWith(Path.GetFullPath(basePath)))
+            if (!fullTargetPath.StartsWith(fullBasePath, StringComparison.OrdinalIgnoreCase))
             {
                 throw new Exception("Invalid path detected.");
             }
-
             // 🔴 OLD
             // _strAdCode = "Vostro_" + ddlBranch.SelectedItem.Value + "_" + datePart;
 
             string adCode = ddlBranch.SelectedItem.Value;
             adCode = System.Text.RegularExpressions.Regex.Replace(adCode, @"[^a-zA-Z0-9]", "");
             _strAdCode = "Vostro_" + adCode + "_" + datePart;
-            _strAdCode = System.Text.RegularExpressions.Regex.Replace(_strAdCode, @"[^a-zA-Z0-9]", "");
             if (!Directory.Exists(_directoryPath))
             {
                 Directory.CreateDirectory(_directoryPath);
@@ -516,11 +623,11 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
             // 🔴 OLD
             // string _filePath = _directoryPath + "/" + _strAdCode + ".CSV";
 
-            string _filePath = Path.Combine(_directoryPath, _strAdCode + ".CSV");
+            string _filePath = Path.GetFullPath(Path.Combine(_directoryPath, _strAdCode + ".CSV"));
 
             StreamWriter sw = File.CreateText(_filePath);
 
-            string _strHeader = "ADCODE,BRANCH NAME,...,BANKCODE";
+            string _strHeader = "ADCODE,BRANCH NAME,FR_FORTNIGHT_DT,TO_FORTNIGHT_DT,NV,CURR,COUNTRY CODE,BANK NAME,OP_D,OP_C,CL_D,CL_C,BANKCODE";
             sw.WriteLine(_strHeader);
 
             if (dt.Rows.Count > 0)
@@ -543,7 +650,6 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
                 HyperLink link = new HyperLink();
                 link.Text = "Download File";
                 //link.NavigateUrl = downloadpath;
-                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
                 link.NavigateUrl = ResolveUrl(downloadpath);
                 link.CssClass = "buttonDefault";
                 vostrofile.Controls.Add(link);
@@ -557,7 +663,6 @@ public partial class RRETURN_Ret_DataCSV : System.Web.UI.Page
                 HyperLink link = new HyperLink();
                 link.Text = "Download File";
                 //link.NavigateUrl = downloadpath;
-                downloadpath = System.Text.RegularExpressions.Regex.Replace(downloadpath, @"[^a-zA-Z0-9]", "");
                 link.NavigateUrl = ResolveUrl(downloadpath);
                 link.CssClass = "buttonDefault";
                 vostrofile.Controls.Add(link);
