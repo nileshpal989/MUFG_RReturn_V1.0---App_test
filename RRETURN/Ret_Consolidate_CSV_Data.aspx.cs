@@ -180,9 +180,9 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
                 string ERS_Path = Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV");
                 string NOSTRO_Path = Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV");
                 string VOSTRO_Path = Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV");
-                ERS_Path = System.Text.RegularExpressions.Regex.Replace(ERS_Path, @"[^a-zA-Z0-9]", "");
-                NOSTRO_Path = System.Text.RegularExpressions.Regex.Replace(NOSTRO_Path, @"[^a-zA-Z0-9]", "");
-                VOSTRO_Path = System.Text.RegularExpressions.Regex.Replace(VOSTRO_Path, @"[^a-zA-Z0-9]", "");
+                ERS_Path = Path.GetFullPath(Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV"));
+                NOSTRO_Path = Path.GetFullPath(Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV"));
+                VOSTRO_Path = Path.GetFullPath(Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV"));
                 if (File.Exists(ERS_Path) && File.Exists(NOSTRO_Path) && File.Exists(VOSTRO_Path))
                 {
                     ErrorMessage.Append(safeBranch + " File Received.");
@@ -230,7 +230,7 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
                     throw new Exception("Invalid path detected.");
 
                 string path1 = Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV");
-                string path = System.Text.RegularExpressions.Regex.Replace(path1, @"[^a-zA-Z0-9]", "");
+                string path = Path.GetFullPath(Path.Combine(folderPath, "ERS_" + safeAdCode + "_" + filedate + ".CSV"));
 
                 using (StreamReader sr = new StreamReader(path))
                 {
@@ -311,7 +311,7 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
                     throw new Exception("Invalid path detected.");
 
                 string path1 = Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV");
-                string path = System.Text.RegularExpressions.Regex.Replace(path1, @"[^a-zA-Z0-9]", "");
+                string path = Path.GetFullPath(Path.Combine(folderPath, "Nostro_" + safeAdCode + "_" + filedate + ".CSV"));
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string[] rows = sr.ReadToEnd().Split('\n');
@@ -361,7 +361,8 @@ public partial class RRETURN_Ret_Consolidate_CSV_Data : System.Web.UI.Page
                     throw new Exception("Invalid path detected.");
 
                 string path1 = Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV");
-                string path = System.Text.RegularExpressions.Regex.Replace(path1, @"[^a-zA-Z0-9]", "");
+                string path = Path.GetFullPath(Path.Combine(folderPath, "Vostro_" + safeAdCode + "_" + filedate + ".CSV"));
+
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string[] rows = sr.ReadToEnd().Split('\n');
