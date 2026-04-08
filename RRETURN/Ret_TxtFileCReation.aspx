@@ -75,6 +75,7 @@
                 </div>
             </ProgressTemplate>
         </asp:UpdateProgress>
+        <asp:HiddenField ID="hdnConfirm" runat="server" />
         <uc1:Menu ID="Menu1" runat="server" />
         <br />
         <br />

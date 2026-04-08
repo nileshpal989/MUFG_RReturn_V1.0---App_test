@@ -242,6 +242,7 @@
 						<li><a href="~/TF_rpt_LoginLog.aspx?PageHeader=User Login Activity Details" id="tf_rpt_loginlog" runat="server" disabled="disabled" visible="false">User Login Activity Details</a></li>
                          <li><a href="~/TF_AdminAuditTrail.aspx?PageHeader=Admin AuditTrail" id="AdminAudit" runat="server" disabled="disabled" visible="false">Admin AuditTrail</a></li>
                          <li><a href="~/RRETURN/TF_RET_ErrorLog_TxtFileCreation.aspx?PageHeader=Error Log" id="mnu_ErrorLog" runat="server" disabled="disabled" visible="false">Error Log</a></li>
+                         <li><a href="~/Reports/RRETURNReports/TF_RReturn_FU_History.aspx?PageHeader=File Upload History" id="mnu_FUHistory" runat="server" disabled="disabled" visible="false">File Upload History</a></li>
 					</ul>
 				</li>
 				<li>

@@ -197,6 +197,10 @@ public partial class Menu_Menu : System.Web.UI.UserControl
 
             mHk_HouseKeeping.Visible = true;
             mHk_HouseKeeping.Disabled = false;
+
+            //07-04-2026 -------Nilesh
+            mnu_FUHistory.Visible = true;
+            mnu_FUHistory.Disabled = false;
         }
         
         #endregion
