@@ -274,7 +274,13 @@ public partial class TF_Login : System.Web.UI.Page
                     parastatus.Value = labelMessage.Text;
                     string stored_logs = objSave1.SaveDeleteData(Log_Query, puserid, pip, ptimestamp, paratype, parastatus);
                 }
-                Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+                //Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+                HttpCookie cookie = new HttpCookie("ASP.NET_SessionId", "");
+                cookie.HttpOnly = true;   // JS se access block
+                //cookie.Secure = true;     // Sirf HTTPS pe chalega
+                //cookie.SameSite = SameSiteMode.Strict; // CSRF protection
+
+                Response.Cookies.Add(cookie);
             }
         }
         else
