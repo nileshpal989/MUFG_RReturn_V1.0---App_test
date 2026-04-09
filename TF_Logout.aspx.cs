@@ -15,7 +15,11 @@ public partial class TF_Logout : System.Web.UI.Page
         Response.Cookies["userName"].Expires = DateTime.Now.AddDays(-1);
         Response.Cookies["hgoribshxo1ia2jqyjmi54et"].Expires = DateTime.Now.AddDays(-1);
         Session.Abandon();
-        Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+        //Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+        HttpCookie cookie = new HttpCookie("ASP.NET_SessionId", "");
+        cookie.HttpOnly = true;   // JS se access block
+        cookie.Secure = Request.IsSecureConnection;
+        Response.Cookies.Add(cookie);
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
