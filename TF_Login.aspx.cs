@@ -278,7 +278,9 @@ public partial class TF_Login : System.Web.UI.Page
                 HttpCookie cookie = new HttpCookie("ASP.NET_SessionId", "");
                 cookie.HttpOnly = true;   // JS se access block
                 //cookie.Secure = true;     // Sirf HTTPS pe chalega
+                cookie.Secure = Request.IsSecureConnection;
                 //cookie.SameSite = SameSiteMode.Strict; // CSRF protection
+                
 
                 Response.Cookies.Add(cookie);
             }
