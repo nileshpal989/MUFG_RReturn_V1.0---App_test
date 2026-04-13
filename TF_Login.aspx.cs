@@ -10,6 +10,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
 using System.Net;
+using System.Text;
 
 
 public partial class TF_Login : System.Web.UI.Page
@@ -64,7 +65,28 @@ public partial class TF_Login : System.Web.UI.Page
             btnUserList.Attributes.Add("onclick", "return OpenUserList();");
         }
     }
+    public static string EscapeLdap(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
 
+        StringBuilder sb = new StringBuilder();
+
+        foreach (char c in input)
+        {
+            switch (c)
+            {
+                case '\\': sb.Append("\\5c"); break;
+                case '*': sb.Append("\\2a"); break;
+                case '(': sb.Append("\\28"); break;
+                case ')': sb.Append("\\29"); break;
+                case '\0': sb.Append("\\00"); break;
+                default: sb.Append(c); break;
+            }
+        }
+
+        return sb.ToString();
+    }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         TF_DATA objSave = new TF_DATA();
@@ -91,7 +113,8 @@ public partial class TF_Login : System.Web.UI.Page
             LdapAuthentication adAuth = new LdapAuthentication(adPath);
             try
             {
-                if (true == adAuth.IsAuthenticated(domain, txtUserName.Text, txtPassword.Text))
+                string safeUsername = EscapeLdap(txtUserName.Text);
+                if (true == adAuth.IsAuthenticated(domain, safeUsername, txtPassword.Text))
                 {
                     _userName = txtUserName.Text.Trim();
                     string suser = chkUser(_userName);
@@ -277,11 +300,7 @@ public partial class TF_Login : System.Web.UI.Page
                 //Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 HttpCookie cookie = new HttpCookie("ASP.NET_SessionId", "");
                 cookie.HttpOnly = true;   // JS se access block
-                //cookie.Secure = true;     // Sirf HTTPS pe chalega
                 cookie.Secure = Request.IsSecureConnection;
-                //cookie.SameSite = SameSiteMode.Strict; // CSRF protection
-                
-
                 Response.Cookies.Add(cookie);
             }
         }
