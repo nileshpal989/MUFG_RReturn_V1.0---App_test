@@ -18,9 +18,32 @@ public class LdapAuthentication
         _path = path;
     }
 
+    public static string EscapeLdap(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
 
+        StringBuilder sb = new StringBuilder();
+
+        foreach (char c in input)
+        {
+            switch (c)
+            {
+                case '\\': sb.Append("\\5c"); break;
+                case '*': sb.Append("\\2a"); break;
+                case '(': sb.Append("\\28"); break;
+                case ')': sb.Append("\\29"); break;
+                case '\0': sb.Append("\\00"); break;
+                default: sb.Append(c); break;
+            }
+        }
+
+        return sb.ToString();
+    }
     public bool IsAuthenticated(String domain, String username, String pwd)
     {
+        string safeUsername = EscapeLdap(username); // ✅ yaha karo
+
         String domainAndUsername = domain + @"\" + username;
         DirectoryEntry entry = new DirectoryEntry(_path, domainAndUsername, pwd);
 
